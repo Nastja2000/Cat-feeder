@@ -7,12 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Presentation;
 
 namespace CatFeeder
 {
-    public partial class Form1 : Form
+    public partial class ImitationView : Form, IImitationView
     {
-        public Form1()
+        public ImitationView()
         {
             InitializeComponent();
             ToolStripMenuItem logAs = new ToolStripMenuItem("Log As");
@@ -38,6 +39,9 @@ namespace CatFeeder
 
         }
 
+        public string CountOfFood => tb_AddFood.Text;
+        public string EatingQuant => tb_QuantityPerCatEating.Text;
+        public string EatingFreq => tb_Cat_Eating_Frequency.Text;
         public string StepSize => tb_StepSize.Text;
        
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
@@ -55,7 +59,7 @@ namespace CatFeeder
        
        
 
-        private void btn_SetUp_Click(object sender, EventArgs e)
+        private void StepSizeButton_Click(object sender, EventArgs e)
         {
 
         }

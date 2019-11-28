@@ -30,7 +30,7 @@ namespace CatFeeder
 
         }*/
 
-        public AdminForm(Form1 f)
+        public AdminForm(ImitationView f)
         {
             InitializeComponent();
             f.BackColor = Color.Red;

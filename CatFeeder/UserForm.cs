@@ -25,7 +25,7 @@ namespace CatFeeder
         
         }
 
-        public UserForm(Form1 f)
+        public UserForm(ImitationView f)
         {
             InitializeComponent();
             f.BackColor = Color.Yellow;

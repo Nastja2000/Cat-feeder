@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "View", "CatFeeder\View.csproj", "{59F487BC-0612-404D-B1BA-4B32CF096101}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentation\Presentation.csproj", "{EC28B0F9-AD39-4A95-BE2B-6AA8C4B4CDCD}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{59F487BC-0612-404D-B1BA-4B32CF096101}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59F487BC-0612-404D-B1BA-4B32CF096101}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{59F487BC-0612-404D-B1BA-4B32CF096101}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EC28B0F9-AD39-4A95-BE2B-6AA8C4B4CDCD}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EC28B0F9-AD39-4A95-BE2B-6AA8C4B4CDCD}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EC28B0F9-AD39-4A95-BE2B-6AA8C4B4CDCD}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EC28B0F9-AD39-4A95-BE2B-6AA8C4B4CDCD}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
