@@ -50,7 +50,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
             this.tb_QuantityDispersion = new System.Windows.Forms.TextBox();
-            this.panel1 = new System.Windows.Forms.Panel();
             this.StartImitButton = new System.Windows.Forms.Button();
             this.StopImitButton = new System.Windows.Forms.Button();
             this.StepButton = new System.Windows.Forms.Button();
@@ -58,6 +57,8 @@
             this.label8 = new System.Windows.Forms.Label();
             this.tb_ImitationDuration = new System.Windows.Forms.TextBox();
             this.tb_AddFood = new System.Windows.Forms.TextBox();
+            this.lv_Food = new System.Windows.Forms.ListView();
+            this.label9 = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -167,6 +168,7 @@
             this.CatEatFreqButton.TabIndex = 9;
             this.CatEatFreqButton.Text = "Set Up";
             this.CatEatFreqButton.UseVisualStyleBackColor = true;
+            this.CatEatFreqButton.Click += new System.EventHandler(this.CatEatFreqButton_Click);
             // 
             // tb_Cat_Eating_Frequency
             // 
@@ -204,6 +206,7 @@
             this.QuantPerCatEatButton.TabIndex = 13;
             this.QuantPerCatEatButton.Text = "Set Up";
             this.QuantPerCatEatButton.UseVisualStyleBackColor = true;
+            this.QuantPerCatEatButton.Click += new System.EventHandler(this.QuantPerCatEatButton_Click);
             // 
             // tb_QuantityPerCatEating
             // 
@@ -250,14 +253,6 @@
             this.tb_QuantityDispersion.Size = new System.Drawing.Size(196, 22);
             this.tb_QuantityDispersion.TabIndex = 16;
             // 
-            // panel1
-            // 
-            this.panel1.Location = new System.Drawing.Point(30, 77);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(405, 247);
-            this.panel1.TabIndex = 20;
-            this.panel1.Paint += new System.Windows.Forms.PaintEventHandler(this.panel1_Paint);
-            // 
             // StartImitButton
             // 
             this.StartImitButton.Location = new System.Drawing.Point(30, 354);
@@ -267,6 +262,7 @@
             this.StartImitButton.TabIndex = 21;
             this.StartImitButton.Text = "Start";
             this.StartImitButton.UseVisualStyleBackColor = true;
+            this.StartImitButton.Click += new System.EventHandler(this.StartImitButton_Click);
             // 
             // StopImitButton
             // 
@@ -277,6 +273,7 @@
             this.StopImitButton.TabIndex = 22;
             this.StopImitButton.Text = "Stop";
             this.StopImitButton.UseVisualStyleBackColor = true;
+            this.StopImitButton.Click += new System.EventHandler(this.StopImitButton_Click);
             // 
             // StepButton
             // 
@@ -287,6 +284,7 @@
             this.StepButton.TabIndex = 23;
             this.StepButton.Text = "Step";
             this.StepButton.UseVisualStyleBackColor = true;
+            this.StepButton.Click += new System.EventHandler(this.StepButton_Click);
             // 
             // AddFoodButton
             // 
@@ -297,6 +295,7 @@
             this.AddFoodButton.TabIndex = 24;
             this.AddFoodButton.Text = "ADD";
             this.AddFoodButton.UseVisualStyleBackColor = true;
+            this.AddFoodButton.Click += new System.EventHandler(this.AddFoodButton_Click);
             // 
             // label8
             // 
@@ -317,7 +316,7 @@
             this.tb_ImitationDuration.TabIndex = 25;
             this.tb_ImitationDuration.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
-            // AddFood
+            // tb_AddFood
             // 
             this.tb_AddFood.Location = new System.Drawing.Point(471, 302);
             this.tb_AddFood.Margin = new System.Windows.Forms.Padding(4);
@@ -325,11 +324,33 @@
             this.tb_AddFood.Size = new System.Drawing.Size(196, 22);
             this.tb_AddFood.TabIndex = 27;
             // 
+            // lv_Food
+            // 
+            this.lv_Food.HideSelection = false;
+            this.lv_Food.Location = new System.Drawing.Point(49, 52);
+            this.lv_Food.Name = "lv_Food";
+            this.lv_Food.Size = new System.Drawing.Size(298, 243);
+            this.lv_Food.TabIndex = 28;
+            this.lv_Food.UseCompatibleStateImageBehavior = false;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label9.ForeColor = System.Drawing.Color.Red;
+            this.label9.Location = new System.Drawing.Point(469, 339);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(47, 20);
+            this.label9.TabIndex = 29;
+            this.label9.Text = "Error";
+            // 
             // ImitationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label9);
+            this.Controls.Add(this.lv_Food);
             this.Controls.Add(this.tb_AddFood);
             this.Controls.Add(this.label8);
             this.Controls.Add(this.tb_ImitationDuration);
@@ -337,7 +358,6 @@
             this.Controls.Add(this.StepButton);
             this.Controls.Add(this.StopImitButton);
             this.Controls.Add(this.StartImitButton);
-            this.Controls.Add(this.panel1);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button3);
@@ -388,7 +408,6 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Button button3;
         private System.Windows.Forms.TextBox tb_QuantityDispersion;
-        private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.Button StartImitButton;
         private System.Windows.Forms.Button StopImitButton;
         private System.Windows.Forms.Button StepButton;
@@ -396,6 +415,8 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.TextBox tb_ImitationDuration;
         private System.Windows.Forms.TextBox tb_AddFood;
+        private System.Windows.Forms.ListView lv_Food;
+        private System.Windows.Forms.Label label9;
     }
 }
 

@@ -15,8 +15,9 @@ namespace Presentation
         event Action StopImitation;
         event Action Step;
         event Action AddFood;
-
-        string TurnDurationLimit { get; set; }
+        event Action EatingQuant;
+        event Action EatingFreq;
+        event Action StepSize;
 
         void ShowFeederStatus(int countOfFood);
         void ShowTime(TimeSpan imit_duration);

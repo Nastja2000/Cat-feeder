@@ -22,11 +22,14 @@ namespace Presentation
             _view.StopImitation += StopImitation;
             _view.Step += Step;
             _view.AddFood += AddFood;
+            _view.EatingFreq += EatingFreq;
+            _view.EatingQuant += EatingQuant;
+            _view.StepSize += StepSize;
+
 
             _imitationServise = imitationServise;
             _imitationServise.TurnFinished += TurnFinished;
-            _imitationServise.EatingFreq += EatingFreq;
-            _imitationServise.EatingQuant += EatingQuant;
+            
 
         }
 
@@ -55,21 +58,21 @@ namespace Presentation
         {
             _imitationServise.StopCombat();
             _view.ImitationStopped();
-            ShowInitiative();
+            
         }
 
         private void ShowUser()
         {
-            //_kernel.Get<OwnerPresenter>();
+            _kernel.Get<OwnerPresenter>().Run();
             //presenter.ImitationUpdated += ShowInitiative;
             _view.Show();
         }
 
         private void ShowAdmin()
         {
-            //_kernel.Get<AdminPresenter>();
+            _kernel.Get<AdminPresenter>().Run();
             //presenter.ImitationUpdated += ShowInitiative;
-            _view.Show();
+           // _view.Show();
         }
 
 
@@ -77,6 +80,19 @@ namespace Presentation
         {
             _imitationServise.ImitationDurationUpdated();
         }
+
+        private void StepSize()
+        {
+            if (int.TryParse(_view.StepSizeVal))
+            {
+                _imitationServise.AddFood(StepSizeVal);
+            }
+            else
+            {
+                _view.ShowError("Invalid 'Initiative' value");
+            }
+        }
+
 
         private void AddFood()
         {
@@ -92,9 +108,9 @@ namespace Presentation
 
         private void EatingQuant()
         {
-            if (int.TryParse(_view.EatingQuant))
+            if (int.TryParse(_view.EatingQuantVal))
             {
-                _imitationServise.EatingQuant(EatingQuant);
+                _imitationServise.EatingQuant(EatingQuantVal);
             }
             else
             {
@@ -104,14 +120,21 @@ namespace Presentation
 
         private void EatingFreq()
         {
-            if (int.TryParse(_view.EatingFreq))
+            if (int.TryParse(_view.EatingFreqVal))
             {
-                _imitationServise.EatingFreq(EatingFreq);
+                _imitationServise.EatingFreq(EatingFreqVal);
             }
             else
             {
                 _view.ShowError("Invalid 'Initiative' value");
             }
         }
+
+        public void Run()
+        {
+            _view.Show();
+        }
+
+        
     }
 }

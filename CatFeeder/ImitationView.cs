@@ -1,11 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
 using System.Drawing;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 using Presentation;
 
@@ -13,87 +9,172 @@ namespace CatFeeder
 {
     public partial class ImitationView : Form, IImitationView
     {
-        public ImitationView()
+        private bool _imitation;
+        private readonly ApplicationContext _context;
+
+        public ImitationView(ApplicationContext context)
         {
+            _context = context;
             InitializeComponent();
+            ResetView();
             ToolStripMenuItem logAs = new ToolStripMenuItem("Log As");
-
-
             ToolStripMenuItem adminItem = new ToolStripMenuItem("Admin");
             ToolStripMenuItem userItem = new ToolStripMenuItem("User");
 
             menuStrip1.Items.Add(logAs);
-            /* Text = "Log In";
-             this.BackColor = Color.Bisque;
-             this.Size = new Size(590, 397);
-             this.ForeColor = Color.Black;
-
-             button1.Text = "User";
-             button1.Size = new Size(100, 80);
-             button2.Text = "Admin";
-             button2.Size = new Size(100, 80);
-
-             label1.Text = "Log as ...";
-             label1.Size = new Size(500, 80);
-             */
-
         }
 
-        public string CountOfFood => tb_AddFood.Text;
-        public string EatingQuant => tb_QuantityPerCatEating.Text;
-        public string EatingFreq => tb_Cat_Eating_Frequency.Text;
-        public string StepSize => tb_StepSize.Text;
-       
-        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        public new void Show()
         {
-            AdminForm lodedAdmin = new AdminForm(this);
-            lodedAdmin.Show();
+            ResetView();
+            _context.MainForm = this;
+            base.Show();
         }
+        public string EatingQuantVal => tb_QuantityPerCatEating.Text;
+        public string EatingFreqVal => tb_Cat_Eating_Frequency.Text;
+
+        public event Action ShowAdmin;
+        public event Action ShowUser;
+        public event Action StartImitation;
+        public event Action StopImitation;
+        public event Action AddFood;
+        public event Action Step;
+        public event Action EatingQuant;
+        public event Action EatingFreq;
+        public event Action StepSize;
+
+        public string CountOfFood => tb_AddFood.Text;        
+        public string StepSizeVal => tb_StepSize.Text;
+
+        public void ShowFood(IEnumerable<string> food)
+        {
+            _food = food.ToArray();  // backup food to operate with it during imitation
+            lv_Food.Items.Clear();
+            foreach (var item in _food)
+            {
+                lv_Food.Items.Add(item);
+            }
+
+            StartImitButton.Enabled = _imitation || _food.Any();
+        }
+
+        public void ShowFeederStatus(int countOfFood)
+        {
+            lv_Food.Items.Clear();
+
+            // Draw Round number
+            lv_Food.Items.Add(new ListViewItem { Text = $"Count of added food =  {countOfFood + 1}", Font = new Font(lv_Food.Font, FontStyle.Bold });
+
+        }
+
+        public void ShowTime(TimeSpan imitation_duration)
+        {
+            tb_ImitationDuration.Text = $@"{imitation_duration:h\:mm\:ss}";
+        }
+
+
+        public void ImitationStarted()
+        {
+            _imitation = true;
+            StepSizeButton.Text = @"Set Up";
+            CatEatFreqButton.Text = @"Set Up";
+            QuantPerCatEatButton.Text = @"Set Up";
+            button3.Text = @"Set Up";
+            AddFoodButton.Text = @"ADD";
+            StepButton.Text = @"Step";
+            StartImitButton.Text = @"Start";
+            StopImitButton.Text = @"Stop";
+
+            StartImitButton.Enabled = true;
+            tb_AddFood.Enabled = true;
+            tb_Cat_Eating_Frequency.Enabled = true;
+            tb_QuantityDispersion.Enabled = true;
+            tb_QuantityPerCatEating.Enabled = true;
+        }
+
+        private void ResetView()
+        {
+            _imitation = false;
+            StepSizeButton.Text = @"Set Up";
+            CatEatFreqButton.Text = @"Set Up";
+            QuantPerCatEatButton.Text = @"Set Up";
+            button3.Text = @"Set Up";
+            AddFoodButton.Text = @"ADD";
+            StepButton.Text = @"Step";
+            StartImitButton.Text = @"Start";
+            StopImitButton.Text = @"Stop";
+
+            StopImitButton.Enabled = false;
+            tb_AddFood.Enabled = true;
+            tb_Cat_Eating_Frequency.Enabled = true;
+            tb_QuantityDispersion.Enabled = true;
+            tb_QuantityPerCatEating.Enabled = true;
+            ShowTime(TimeSpan.Zero);
+        }
+
+        public void ImitationStopped()
+        {
+            ResetView();
+        }
+
+
 
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            UserForm newForm = new UserForm(this);
-            newForm.Show();
+            /*UserForm newForm = new UserForm(this);
+            newForm.Show();*/
+            ShowUser?.Invoke();
         }
 
-       
-       
+        private void adminToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            /*AdminForm lodedAdmin = new AdminForm(this);
+            lodedAdmin.Show();*/
+            ShowAdmin?.Invoke();
+        }
 
         private void StepSizeButton_Click(object sender, EventArgs e)
         {
-
+            StepSize?.Invoke();
         }
 
-        private void panel1_Paint(object sender, PaintEventArgs e)
+        
+
+        private void StartImitButton_Click(object sender, EventArgs e)
         {
-           //здесь будет кормушка
+            StartImitation?.Invoke();
         }
 
-
-
-        /* private void button1_Click(object sender, EventArgs e)
-         {
-             UserForm newForm = new UserForm(this);
-             newForm.Show();
-         }
-
-         private void button2_Click(object sender, EventArgs e)
-         {
-             AdminForm lodedAdmin = new AdminForm(this);
-             lodedAdmin.Show();
-         }
-
-         private void Form1_Load(object sender, EventArgs e)
-         {
-
-         }*/
-
-
-
-        /*private void button1_Click(object sender, EventArgs e)
+        private void StopImitButton_Click(object sender, EventArgs e)
         {
-            UserForm newForm = new UserForm(this);
-            newForm.Show();
-        }*/
+            StopImitation.Invoke();
+        }
+
+        public void ShowError(string message)
+        {
+            lbl_Error.Text = message;
+        }
+
+        private void CatEatFreqButton_Click(object sender, EventArgs e)
+        {
+            EatingFreq?.Invoke();
+        }
+
+        private void QuantPerCatEatButton_Click(object sender, EventArgs e)
+        {
+            EatingQuant?.Invoke();
+        }
+
+        private void AddFoodButton_Click(object sender, EventArgs e)
+        {
+            AddFood?.Invoke();
+        }
+
+        private void StepButton_Click(object sender, EventArgs e)
+        {
+            Step?.Invoke();
+        }
+
+       
     }
 }

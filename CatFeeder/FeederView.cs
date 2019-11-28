@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace CatFeeder
 {
-    public partial class Feeder : Form
+    public partial class FeederView : Form
     {
-        public Feeder()
+        public FeederView()
         {
             InitializeComponent();
            // this.BackgroundImage = Image.FromFile("D:\\University\\тех прога\\Кормушка( интерфейс)\\CatFeeder\\feederImage.jpg");
@@ -20,13 +20,13 @@ namespace CatFeeder
            
         }
 
-        public Feeder(UserForm f)
+        public FeederView(UserView f)
         {
             InitializeComponent();
             f.BackColor = Color.Yellow;
         }
 
-        public Feeder(AdminForm f)
+        public FeederView(AdminView f)
         {
             InitializeComponent();
             f.BackColor = Color.Yellow;
