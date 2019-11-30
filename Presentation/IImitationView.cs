@@ -8,12 +8,18 @@ namespace Presentation
 {
     public interface IImitationView : IView
     {
+        string CountOfFood { get; }
+        string EatingQuantVal { get; }
+        string StepSizeVal { get; }
+        string EatingFreqVal { get; }
+
+       // string TurnDurationLimit { get; set; }
+
         event Action ShowUser;
         event Action ShowAdmin;
 
         event Action StartImitation;
         event Action StopImitation;
-        event Action Step;
         event Action AddFood;
         event Action EatingQuant;
         event Action EatingFreq;
@@ -23,5 +29,6 @@ namespace Presentation
         void ShowTime(TimeSpan imit_duration);
         void ImitationStarted();
         void ImitationStopped();
+        void ShowError(string message);
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using Model;
 using Ninject;
 
@@ -7,10 +8,12 @@ namespace Presentation
     public class ImitationPresenter
     {
         private readonly IKernel _kernel;
+
         private IImitationView _view;
+
         private IImitationService _imitationService;
 
-        public InitiativePresenter(IKernel kernel, IImitationView view, IImitationService imitationService)
+        public ImitationPresenter(IKernel kernel, IImitationView view, IImitationService imitationService)
         {
 
             _kernel = kernel;
@@ -20,7 +23,7 @@ namespace Presentation
             _view.ShowAdmin += ShowAdmin;
             _view.StartImitation += StartImitation;
             _view.StopImitation += StopImitation;
-            _view.Step += Step;
+            //_view.Step += Step;
             _view.AddFood += AddFood;
             _view.EatingFreq += EatingFreq;
             _view.EatingQuant += EatingQuant;
@@ -45,18 +48,18 @@ namespace Presentation
 
         private void StartImitation()
         {
-            if (int.TryParse(_view.TurnDurationLimit, out int limit))
+           /* if (int.TryParse(_view.TurnDurationLimit, out int limit))
                 _imitationServise.TurnDurationLimit = TimeSpan.FromSeconds(limit);
-            _view.TurnDurationLimit = _imitationServise.TurnDurationLimit.Seconds.ToString();
+            _view.TurnDurationLimit = _imitationServise.TurnDurationLimit.Seconds.ToString();*/
 
             _imitationServise.StartImitation();
-            _view.ImitationtStarted();
+            _view.ImitationStarted();
             _view.ShowFeederStatus(_imitationServise.CountOfFood);
         }
 
         private void StopImitation()
         {
-            _imitationServise.StopCombat();
+            _imitationServise.StopImitation();
             _view.ImitationStopped();
             
         }
@@ -83,9 +86,9 @@ namespace Presentation
 
         private void StepSize()
         {
-            if (int.TryParse(_view.StepSizeVal))
+            if (int.TryParse(_view.StepSizeVal, out int stepSizeVal))
             {
-                _imitationServise.AddFood(StepSizeVal);
+                _imitationServise.AddFood(stepSizeVal);
             }
             else
             {
@@ -96,7 +99,7 @@ namespace Presentation
 
         private void AddFood()
         {
-            if (int.TryParse(_view.CountOfFood))
+            if (int.TryParse(_view.CountOfFood, out int countOfFood))
             {
                 _imitationServise.AddFood(countOfFood);
             }
@@ -108,9 +111,9 @@ namespace Presentation
 
         private void EatingQuant()
         {
-            if (int.TryParse(_view.EatingQuantVal))
+            if (int.TryParse(_view.EatingQuantVal, out int eatingQuantVal))
             {
-                _imitationServise.EatingQuant(EatingQuantVal);
+                _imitationServise.EatingQuant(eatingQuantVal);
             }
             else
             {
@@ -120,9 +123,9 @@ namespace Presentation
 
         private void EatingFreq()
         {
-            if (int.TryParse(_view.EatingFreqVal))
+            if (int.TryParse(_view.EatingFreqVal, out int eatingFreqVal))
             {
-                _imitationServise.EatingFreq(EatingFreqVal);
+                _imitationServise.EatingFreq(eatingFreqVal);
             }
             else
             {

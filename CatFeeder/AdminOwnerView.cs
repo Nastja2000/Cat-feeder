@@ -7,14 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using Presentation;
 
 namespace CatFeeder
 {
-    public partial class UserView : Form, IUserView
+    public partial class AdminOwnerView : Form, IAdminOwnerView
     {
         private readonly ApplicationContext _context;
 
-        public UserView(ApplicationContext context)
+        public AdminOwnerView(ApplicationContext context)
         {
             _context = context;
             InitializeComponent();
@@ -65,7 +66,7 @@ namespace CatFeeder
             lbl_Error.Text = message;
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private void ChooseBtn_Click(object sender, EventArgs e)
         {
             ShowFeeder?.Invoke();
         }

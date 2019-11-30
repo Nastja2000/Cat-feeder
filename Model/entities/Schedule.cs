@@ -9,7 +9,7 @@ namespace Model.entities
     public class Schedule
     {
         public int amountOfFood { get; set; }
-        public IList<string> marks = new List<string>();
+        public IEnumerable<string> marks = new List<string>();
 
         /*TODO: как реализовать get set для этого листа */
     }

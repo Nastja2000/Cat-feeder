@@ -12,7 +12,7 @@ namespace Model.entities
         public int tankFood { get; set; }
         /*TODO: plateFood*/
         public Schedule schedule { get; set; }
-
+        public int cats { get; set; }
         public int speed { get; set; }
 
 

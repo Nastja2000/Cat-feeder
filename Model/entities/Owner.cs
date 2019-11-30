@@ -8,7 +8,7 @@ namespace Model.entities
 {
     public class Owner : EntityBase
     {
-        IList<Schedule> schedules = new List<Schedule>();
-        IList<Feeder> feeders = new List<Feeder>();
+        IEnumerable<Schedule> schedules = new List<Schedule>();
+        IEnumerable<Feeder> feeders = new List<Feeder>();
     }
 }

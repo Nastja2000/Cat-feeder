@@ -1,10 +1,11 @@
-﻿using System;
+﻿using Model.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DAL.repository
+namespace Model.repository
 {
     interface IRepository <T>
     {

@@ -3,11 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model.entities;
 
 namespace Model
 {
     public interface IImitationService
     {
+        TimeSpan ImitationDuration { get; }
+
         int getEatingFreq();
         void setEatingFreq(int freq);
         int getEatingQuan();
@@ -17,6 +20,7 @@ namespace Model
         int addFood(int id, int quan);
         void StartImmitation();
         void StopImmitation();
+
 
     }
 }

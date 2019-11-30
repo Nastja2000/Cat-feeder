@@ -59,6 +59,7 @@
             this.tb_AddFood = new System.Windows.Forms.TextBox();
             this.lv_Food = new System.Windows.Forms.ListView();
             this.label9 = new System.Windows.Forms.Label();
+            this.tb_TurnDurationLimit = new System.Windows.Forms.TextBox();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -284,7 +285,6 @@
             this.StepButton.TabIndex = 23;
             this.StepButton.Text = "Step";
             this.StepButton.UseVisualStyleBackColor = true;
-            this.StepButton.Click += new System.EventHandler(this.StepButton_Click);
             // 
             // AddFoodButton
             // 
@@ -300,7 +300,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(495, 375);
+            this.label8.Location = new System.Drawing.Point(457, 380);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(95, 17);
             this.label8.TabIndex = 26;
@@ -309,7 +309,7 @@
             // tb_ImitationDuration
             // 
             this.tb_ImitationDuration.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_ImitationDuration.Location = new System.Drawing.Point(603, 370);
+            this.tb_ImitationDuration.Location = new System.Drawing.Point(558, 374);
             this.tb_ImitationDuration.Name = "tb_ImitationDuration";
             this.tb_ImitationDuration.ReadOnly = true;
             this.tb_ImitationDuration.Size = new System.Drawing.Size(89, 27);
@@ -344,11 +344,21 @@
             this.label9.TabIndex = 29;
             this.label9.Text = "Error";
             // 
+            // tb_TurnDurationLimit
+            // 
+            this.tb_TurnDurationLimit.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_TurnDurationLimit.Location = new System.Drawing.Point(677, 374);
+            this.tb_TurnDurationLimit.Name = "tb_TurnDurationLimit";
+            this.tb_TurnDurationLimit.Size = new System.Drawing.Size(89, 27);
+            this.tb_TurnDurationLimit.TabIndex = 30;
+            this.tb_TurnDurationLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            // 
             // ImitationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.tb_TurnDurationLimit);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lv_Food);
             this.Controls.Add(this.tb_AddFood);
@@ -377,7 +387,7 @@
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "ImitationView";
-            this.Text = "Form1";
+            this.Text = " ";
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -417,6 +427,7 @@
         private System.Windows.Forms.TextBox tb_AddFood;
         private System.Windows.Forms.ListView lv_Food;
         private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.TextBox tb_TurnDurationLimit;
     }
 }
 

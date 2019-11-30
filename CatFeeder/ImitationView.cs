@@ -10,6 +10,7 @@ namespace CatFeeder
     public partial class ImitationView : Form, IImitationView
     {
         private bool _imitation;
+        private string[] _food;
         private readonly ApplicationContext _context;
 
         public ImitationView(ApplicationContext context)
@@ -38,10 +39,11 @@ namespace CatFeeder
         public event Action StartImitation;
         public event Action StopImitation;
         public event Action AddFood;
-        public event Action Step;
+        //public event Action Step;
         public event Action EatingQuant;
         public event Action EatingFreq;
         public event Action StepSize;
+
 
         public string CountOfFood => tb_AddFood.Text;        
         public string StepSizeVal => tb_StepSize.Text;
@@ -63,7 +65,7 @@ namespace CatFeeder
             lv_Food.Items.Clear();
 
             // Draw Round number
-            lv_Food.Items.Add(new ListViewItem { Text = $"Count of added food =  {countOfFood + 1}", Font = new Font(lv_Food.Font, FontStyle.Bold });
+            lv_Food.Items.Add(new ListViewItem { Text = $"Count of added food =  {countOfFood + 1}", Font = new Font(lv_Food.Font, FontStyle.Bold )});
 
         }
 
@@ -170,10 +172,10 @@ namespace CatFeeder
             AddFood?.Invoke();
         }
 
-        private void StepButton_Click(object sender, EventArgs e)
+       /* private void StepButton_Click(object sender, EventArgs e)
         {
             Step?.Invoke();
-        }
+        }*/
 
        
     }

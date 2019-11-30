@@ -49,17 +49,29 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AdminForm.cs">
+    <Compile Include="AdminFeederView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="AdminForm.Designer.cs">
-      <DependentUpon>AdminForm.cs</DependentUpon>
+    <Compile Include="AdminFeederView.Designer.cs">
+      <DependentUpon>AdminFeederView.cs</DependentUpon>
     </Compile>
-    <Compile Include="Feeder.cs">
+    <Compile Include="AdminOwnerView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Feeder.Designer.cs">
-      <DependentUpon>Feeder.cs</DependentUpon>
+    <Compile Include="AdminOwnerView.Designer.cs">
+      <DependentUpon>AdminOwnerView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="AdminView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AdminView.Designer.cs">
+      <DependentUpon>AdminView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="FeederView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="FeederView.Designer.cs">
+      <DependentUpon>FeederView.cs</DependentUpon>
     </Compile>
     <Compile Include="ImitationView.cs">
       <SubType>Form</SubType>
@@ -69,17 +81,29 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="UserForm.cs">
+    <Compile Include="OwnerView.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="UserForm.Designer.cs">
-      <DependentUpon>UserForm.cs</DependentUpon>
+    <Compile Include="OwnerView.Designer.cs">
+      <DependentUpon>OwnerView.cs</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="AdminForm.resx">
-      <DependentUpon>AdminForm.cs</DependentUpon>
+    <Compile Include="ScheduleView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ScheduleView.Designer.cs">
+      <DependentUpon>ScheduleView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="AdminFeederView.resx">
+      <DependentUpon>AdminFeederView.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Feeder.resx">
-      <DependentUpon>Feeder.cs</DependentUpon>
+    <EmbeddedResource Include="AdminOwnerView.resx">
+      <DependentUpon>AdminOwnerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="AdminView.resx">
+      <DependentUpon>AdminView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="FeederView.resx">
+      <DependentUpon>FeederView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ImitationView.resx">
       <DependentUpon>ImitationView.cs</DependentUpon>
@@ -93,8 +117,11 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <EmbeddedResource Include="UserForm.resx">
-      <DependentUpon>UserForm.cs</DependentUpon>
+    <EmbeddedResource Include="OwnerView.resx">
+      <DependentUpon>OwnerView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ScheduleView.resx">
+      <DependentUpon>ScheduleView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
@@ -109,6 +136,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Presentation\Presentation.csproj">
+      <Project>{ec28b0f9-ad39-4a95-be2b-6aa8c4b4cdcd}</Project>
+      <Name>Presentation</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
