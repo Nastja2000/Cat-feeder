@@ -8,17 +8,21 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public interface IFeederService
+    interface IFeederService
     {
         //TODO: Всё тут
-        // +findSchedules(???)
-        IEnumerable<Schedule> GetAllSchedule();
+        event Action ScheduleByOwnerUpdated;
+        event Action FeederByOwnerUpdated;
+
+
+        IEnumerable<Schedule> GetAllSchedules();
+        //+findSchedules(???)
+        void chooseSchedule(int id);
         void ImportSchedule(StreamReader reader);
         void ExportSchedule(StreamWriter writer);
-        void chooseSchedule(int id);
-        void deleteSchedule(int id);
-        void CreateSchedule(/*что прийдёт из форм*/);
-        //+log(Feeder)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        //void changeName(???)
+        void deleteSchedule( int id);
+		//+log(Feeder)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        void changeName(int id, string name);
+		void CreateSchedule(/*что прийдёт из форм*/);
     }
 }

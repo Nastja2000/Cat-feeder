@@ -8,9 +8,11 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public interface IAdminFeederService
+    interface IAdminFeederService
     {
-        IEnumerable<Schedule> GetAllSchedule();
+        event Action ScheduleUpdated;
+
+        IEnumerable<Schedule> GetAllSchedules();
         //findSchedules(???)
         void ImportSchedule(StreamReader reader);
         void ExportSchedule(StreamWriter writer);

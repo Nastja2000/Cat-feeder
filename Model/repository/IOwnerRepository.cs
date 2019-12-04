@@ -11,5 +11,6 @@ namespace Model.repository
     {
         IEnumerable<Schedule> GetSchedules(int id);
         IEnumerable<Feeder> GetFeeders(int id);
+
     }
 }

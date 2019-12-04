@@ -7,10 +7,12 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public interface IAdminMainService
+    interface IAdminMainService
     {
-        IEnumerable<Owner> GetAllOwners();
-        void addOwner(/*что прийдёт из форм*/);
+        event Action OwnerUpdated;
+
+        IEnumerable<string> GetAllOwners();
+        void addOwner(string name);
         void deleteOwner(int id);
 //+log()
     }

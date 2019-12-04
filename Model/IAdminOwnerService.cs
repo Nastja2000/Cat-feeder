@@ -7,12 +7,16 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    public interface IAdminOwnerService
+    interface IAdminOwnerService
     {
-        IEnumerable<Feeder> GetAllFeeder();
-        void addFeeder(/*что прийдёт из форм*/);
+
+        event Action FeederUpdated;
+
+        IEnumerable<Feeder> GetAllFeeders();
+
+        void addFeeder(string name);
         void deleteFeeder(int Id);
-//+log(owner: Owner)
+        //+log(owner: Owner)
 
     }
 }

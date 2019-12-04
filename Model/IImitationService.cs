@@ -9,6 +9,7 @@ namespace Model
 {
     public interface IImitationService
     {
+        TimeSpan ImitationDuration { get; }
         IEnumerable<Feeder> GetAllFeeders();
         int getEatingFreq();
         void setEatingFreq(int freq);

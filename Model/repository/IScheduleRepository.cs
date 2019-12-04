@@ -10,6 +10,6 @@ namespace Model.repository
     interface IScheduleRepository: IRepository<Schedule>
     {
         IEnumerable<Schedule> readByOwner(Owner owner);
-        IEnumerable<Schedule> readByMarks( IEnumerable<string> marks); 
+        IEnumerable<Schedule> readByMarks(IEnumerable<string> marks);
     }
 }

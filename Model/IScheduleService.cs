@@ -1,18 +1,20 @@
-﻿using Model.entities;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Model.entities;
 
 namespace Model
 {
-    public interface IScheduleService
+    interface IScheduleService
     {
+        event Action ScheduleByOwnerUpdate;
 
         Schedule GetSchedule();
-        // +Save(????)
-        //+log(Schedule)
+     
 
+        void Save(IEnumerable<string> info);
+        //+log(Schedule)
     }
 }
