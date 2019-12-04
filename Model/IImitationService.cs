@@ -1,15 +1,16 @@
-﻿using System;
+﻿using Model.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.entities;
 
 namespace Model
 {
     public interface IImitationService
     {
         TimeSpan ImitationDuration { get; }
+        IEnumerable<Feeder> GetAllFeeders();
 
         int getEatingFreq();
         void setEatingFreq(int freq);

@@ -12,6 +12,7 @@ namespace Model
         event Action ScheduleByOwnerUpdate;
 
         Schedule GetSchedule();
+     
 
         void Save(IEnumerable<string> info);
         //+log(Schedule)

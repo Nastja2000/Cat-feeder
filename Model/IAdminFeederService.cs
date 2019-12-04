@@ -1,9 +1,10 @@
-﻿using System;
+﻿using Model.entities;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Model.entities;
 
 namespace Model
 {
@@ -13,7 +14,8 @@ namespace Model
 
         IEnumerable<Schedule> GetAllSchedules();
         //findSchedules(???)
-        ImportSchedule(StreamReader reader);
-        ExportSchedule(StreamWriter writer);
+        void ImportSchedule(StreamReader reader);
+        void ExportSchedule(StreamWriter writer);
+
     }
 }
