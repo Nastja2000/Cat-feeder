@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -8,6 +9,7 @@ namespace Model
 {
     public interface IImitationService
     {
+        IEnumerable<Feeder> GetAllFeeders();
         int getEatingFreq();
         void setEatingFreq(int freq);
         int getEatingQuan();

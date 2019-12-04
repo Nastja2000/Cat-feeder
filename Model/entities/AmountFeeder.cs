@@ -8,6 +8,6 @@ namespace Model.entities
 {
     public class AmountFeeder : Feeder
     {
-        public int addLeft { get; set; }
+        public int leftToAdd{ get; set; }
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Model.entities;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +7,12 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    interface IScheduleService
+    public interface IScheduleService
     {
+
+        Schedule GetSchedule();
+        // +Save(????)
+        //+log(Schedule)
+
     }
 }

@@ -23,6 +23,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -32,6 +33,7 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <LangVersion>8.0</LangVersion>
   </PropertyGroup>
   <PropertyGroup>
     <StartupObject />
@@ -40,11 +42,29 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="entities\AmountFeeder.cs" />
+    <Compile Include="entities\EntityBase.cs" />
+    <Compile Include="entities\Feeder.cs" />
+    <Compile Include="entities\Owner.cs" />
+    <Compile Include="entities\Schedule.cs" />
+    <Compile Include="IAdminFeederService.cs" />
+    <Compile Include="IAdminOwnerService.cs" />
+    <Compile Include="IAdminMainService.cs" />
+    <Compile Include="IFeederService.cs" />
     <Compile Include="IImitationService.cs" />
+    <Compile Include="IOwnerService.cs" />
+    <Compile Include="IScheduleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="repository\IFeederRepository.cs" />
+    <Compile Include="repository\IOwnerRepository.cs" />
+    <Compile Include="repository\IRepository.cs" />
+    <Compile Include="repository\IScheduleRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="services\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,12 +1,19 @@
-﻿using System;
+﻿using Model.entities;
+using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Model
 {
-    interface IAdminFeederService
+    public interface IAdminFeederService
     {
+        IEnumerable<Schedule> GetAllSchedule();
+        //findSchedules(???)
+        void ImportSchedule(StreamReader reader);
+        void ExportSchedule(StreamWriter writer);
+
     }
 }
