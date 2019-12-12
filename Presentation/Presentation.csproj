@@ -47,13 +47,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminFeederPresenter.cs" />
+    <Compile Include="AdminOwnerPresenter.cs" />
+    <Compile Include="AdminPresenter.cs" />
+    <Compile Include="FeederPresenter.cs" />
+    <Compile Include="IAdminFeederView.cs" />
+    <Compile Include="IAdminOwnerView.cs" />
+    <Compile Include="IAdminView.cs" />
+    <Compile Include="IFeederView.cs" />
     <Compile Include="IImitationView.cs" />
     <Compile Include="ImitationPresenter.cs" />
+    <Compile Include="IOwnerView.cs" />
+    <Compile Include="IScheduleView.cs" />
     <Compile Include="IView.cs" />
+    <Compile Include="OwnerPresenter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SchedulePresenter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Model\Model.csproj">
+      <Project>{e355ae71-23e5-46c0-9046-f1be68507fc0}</Project>
+      <Name>Model</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

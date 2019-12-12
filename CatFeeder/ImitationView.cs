@@ -10,6 +10,7 @@ namespace CatFeeder
     public partial class ImitationView : Form, IImitationView
     {
         private bool _imitation;
+        private string[] _food;
         private readonly ApplicationContext _context;
 
         public ImitationView(ApplicationContext context)
@@ -35,16 +36,18 @@ namespace CatFeeder
 
         public event Action ShowAdmin;
         public event Action ShowUser;
-        public event Action StartImitation;
-        public event Action StopImitation;
-        public event Action AddFood;
-        public event Action Step;
-        public event Action EatingQuant;
-        public event Action EatingFreq;
-        public event Action StepSize;
+        public event Action StartImmitation;
+        public event Action StopImmitation;
+        public event Action addFood;
+        //public event Action Step;
+        public event Action setEatingQuan;
+        public event Action setEatingFreq;
+        public event Action setStepSize;
+
 
         public string CountOfFood => tb_AddFood.Text;        
         public string StepSizeVal => tb_StepSize.Text;
+        public int id => int.Parse(tb_name.Text);
 
         public void ShowFood(IEnumerable<string> food)
         {
@@ -63,7 +66,7 @@ namespace CatFeeder
             lv_Food.Items.Clear();
 
             // Draw Round number
-            lv_Food.Items.Add(new ListViewItem { Text = $"Count of added food =  {countOfFood + 1}", Font = new Font(lv_Food.Font, FontStyle.Bold });
+            lv_Food.Items.Add(new ListViewItem { Text = $"Count of added food =  {countOfFood + 1}", Font = new Font(lv_Food.Font, FontStyle.Bold )});
 
         }
 
@@ -135,19 +138,19 @@ namespace CatFeeder
 
         private void StepSizeButton_Click(object sender, EventArgs e)
         {
-            StepSize?.Invoke();
+            setStepSize?.Invoke();
         }
 
         
 
         private void StartImitButton_Click(object sender, EventArgs e)
         {
-            StartImitation?.Invoke();
+            StartImmitation?.Invoke();
         }
 
         private void StopImitButton_Click(object sender, EventArgs e)
         {
-            StopImitation.Invoke();
+            StopImmitation.Invoke();
         }
 
         public void ShowError(string message)
@@ -157,24 +160,26 @@ namespace CatFeeder
 
         private void CatEatFreqButton_Click(object sender, EventArgs e)
         {
-            EatingFreq?.Invoke();
+            setEatingFreq?.Invoke();
         }
 
         private void QuantPerCatEatButton_Click(object sender, EventArgs e)
         {
-            EatingQuant?.Invoke();
+            setEatingQuan?.Invoke();
         }
 
         private void AddFoodButton_Click(object sender, EventArgs e)
         {
-            AddFood?.Invoke();
+            addFood?.Invoke();
         }
 
-        private void StepButton_Click(object sender, EventArgs e)
-        {
-            Step?.Invoke();
-        }
+        
 
-       
+        /* private void StepButton_Click(object sender, EventArgs e)
+         {
+             Step?.Invoke();
+         }*/
+
+
     }
 }

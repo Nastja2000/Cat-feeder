@@ -35,7 +35,7 @@
             this.DeleteBtn = new System.Windows.Forms.Button();
             this.tb_Name = new System.Windows.Forms.TextBox();
             this.lbl_Error = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.ChooseBtn = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // AddBtn
@@ -108,23 +108,23 @@
             this.lbl_Error.TabIndex = 11;
             this.lbl_Error.Text = "Error";
             // 
-            // button1
+            // ChooseBtn
             // 
-            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.Location = new System.Drawing.Point(473, 221);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(102, 37);
-            this.button1.TabIndex = 12;
-            this.button1.Text = "Choose";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.ChooseBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.ChooseBtn.Location = new System.Drawing.Point(473, 221);
+            this.ChooseBtn.Name = "ChooseBtn";
+            this.ChooseBtn.Size = new System.Drawing.Size(102, 37);
+            this.ChooseBtn.TabIndex = 12;
+            this.ChooseBtn.Text = "Choose";
+            this.ChooseBtn.UseVisualStyleBackColor = true;
+            this.ChooseBtn.Click += new System.EventHandler(this.ChooseBtn_Click);
             // 
             // AdminView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.ChooseBtn);
             this.Controls.Add(this.lbl_Error);
             this.Controls.Add(this.tb_Name);
             this.Controls.Add(this.DeleteBtn);
@@ -148,6 +148,6 @@
         private System.Windows.Forms.Button DeleteBtn;
         private System.Windows.Forms.TextBox tb_Name;
         private System.Windows.Forms.Label lbl_Error;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button ChooseBtn;
     }
 }

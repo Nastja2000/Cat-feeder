@@ -6,12 +6,13 @@ namespace Presentation
     public interface IAdminView : IView
     {
         event Action ShowUser;
-      //event Action ShowUsers;
         event Action GoBack;
         event Action<string> AddUser;
         event Action<string> DeleteUser;
 
-        void ChooseUser();
-        void Log();
+        void ShowUsers(IEnumerable<string> users);
+        void ShowError(string message);
+        //void ChooseUser();
+        //void Log();
     }
 }

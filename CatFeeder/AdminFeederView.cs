@@ -11,10 +11,10 @@ using Presentation;
 
 namespace CatFeeder
 {
-    public partial class FeederView : Form, IFeederView
+    public partial class AdminFeederView : Form, IAdminFeederView
     {
         private readonly ApplicationContext _context;
-        public FeederView(ApplicationContext context)
+        public AdminFeederView(ApplicationContext context)
         {
             _context = context;
             InitializeComponent();
@@ -32,6 +32,7 @@ namespace CatFeeder
         public event Action<string> AddSch;
         public event Action<string> ImportSch;
         public event Action<string> ExportSch;
+        public event Action<string> DeleteSch;
 
         private void GoBackBtn_Click(object sender, EventArgs e)
         {
@@ -41,6 +42,15 @@ namespace CatFeeder
         private void AddBtn_Click(object sender, EventArgs e)
         {
             AddSch?.Invoke(tb_Name.Text);
+        }
+
+        private void DeleteBtn_Click(object sender, EventArgs e)
+        {
+            foreach (var item in lv_users.SelectedItems)
+            {
+                var lvItem = item as ListViewItem;
+                DeleteSch?.Invoke(lvItem?.Text);
+            }
         }
 
         public void ShowSchs(IEnumerable<string> users)
@@ -72,7 +82,7 @@ namespace CatFeeder
                 ExportSch?.Invoke(saveFileDialog.FileName);
             }
         }
-        
+
         private void ChooseBtn_Click_1(object sender, EventArgs e)
         {
             ShowSch?.Invoke();

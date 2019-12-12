@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 using Presentation;
 
 namespace CatFeeder
 {
-    public partial class AdminView : Form, IAdminView
+    public partial class OwnerView : Form, IOwnerView
     {
         private readonly ApplicationContext _context;
-        public AdminView(ApplicationContext context)
+
+        public OwnerView(ApplicationContext context)
         {
             _context = context;
             InitializeComponent();
@@ -21,11 +28,10 @@ namespace CatFeeder
             base.Show();
         }
 
-        public event Action ShowUser;
-      //public event Action ShowFeeder;
-      public event Action GoBack;
-      public event Action<string> AddUser;
-        public event Action<string> DeleteUser;
+        public event Action ShowFeeder;
+        public event Action GoBack;
+        public event Action<string> AddFeeder;
+        public event Action<string> DeleteFeeder;
 
         private void GoBackBtn_Click(object sender, EventArgs e)
         {
@@ -34,26 +40,26 @@ namespace CatFeeder
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            AddUser?.Invoke(tb_Name.Text);
+            AddFeeder?.Invoke(tb_Name.Text);
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
-        { 
+        {
             foreach (var item in lv_users.SelectedItems)
             {
                 var lvItem = item as ListViewItem;
-                DeleteUser?.Invoke(lvItem?.Text);
+                DeleteFeeder?.Invoke(lvItem?.Text);
             }
         }
 
-        public void ShowUsers(IEnumerable<string> users)
+        public void ShowFeeders(IEnumerable<string> feeders)
         {
             lv_users.Items.Clear();
-            foreach (var name in users)
+            foreach (var name in feeders)
             {
                 lv_users.Items.Add(name);
             }
-        }       
+        }
 
         public void ShowError(string message)
         {
@@ -62,7 +68,7 @@ namespace CatFeeder
 
         private void ChooseBtn_Click(object sender, EventArgs e)
         {
-            ShowUser?.Invoke();
+            ShowFeeder?.Invoke();
         }
     }
 }
