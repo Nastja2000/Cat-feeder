@@ -12,7 +12,7 @@ namespace Presentation
 
         event Action GoBack;
         event Action<string> Save;
-        event Action<bool> AddMark;
+        //event Action<bool> AddMark;
 
         void ShowError(string message);
     }

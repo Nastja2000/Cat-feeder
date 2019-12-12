@@ -7,10 +7,10 @@ namespace Presentation
     public interface IAdminFeederView : IView
     {
         event Action ShowSch;
-        event Action<string> ImportSch;
-        event Action<string> ExportSch;
-        event Action<string> AddSch;
-        event Action<string> DeleteSch;
+        event Action<string> ImportSchedule;
+        event Action<string> ExportSchedule;
+        //event Action<string> AddSch;
+       // event Action<string> DeleteSch;
         event Action GoBack;
 
         void ShowSchs(IEnumerable<string> characters);

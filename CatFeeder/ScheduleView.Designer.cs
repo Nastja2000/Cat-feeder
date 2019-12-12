@@ -55,7 +55,7 @@
             this.AddBtn.TabIndex = 33;
             this.AddBtn.Text = "Add Mark";
             this.AddBtn.UseVisualStyleBackColor = true;
-            this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
+            //this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // SaveBtn
             // 

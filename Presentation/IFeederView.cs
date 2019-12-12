@@ -7,9 +7,9 @@ namespace Presentation
    public interface IFeederView : IView
     {
         event Action ShowSch;
-        event Action<string> ImportSch;
-        event Action<string> ExportSch;
-        event Action<string> AddSch;
+        event Action<string> ImportSchedule;
+        event Action<string> ExportSchedule;
+        event Action<string> CreateSchedule;
         event Action GoBack;
 
         void ShowSchs(IEnumerable<string> characters);

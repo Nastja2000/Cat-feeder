@@ -21,11 +21,11 @@ namespace CatFeeder
             base.Show();
         }
 
-        public event Action ShowUser;
+        public event Action ShowOwner;
       //public event Action ShowFeeder;
       public event Action GoBack;
-      public event Action<string> AddUser;
-        public event Action<string> DeleteUser;
+      public event Action<string> addOwner;
+        public event Action<string> deleteOwner;
 
         private void GoBackBtn_Click(object sender, EventArgs e)
         {
@@ -34,7 +34,7 @@ namespace CatFeeder
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            AddUser?.Invoke(tb_Name.Text);
+            addOwner?.Invoke(tb_Name.Text);
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -42,11 +42,11 @@ namespace CatFeeder
             foreach (var item in lv_users.SelectedItems)
             {
                 var lvItem = item as ListViewItem;
-                DeleteUser?.Invoke(lvItem?.Text);
+                deleteOwner?.Invoke(lvItem?.Text);
             }
         }
 
-        public void ShowUsers(IEnumerable<string> users)
+        public void ShowOwners(IEnumerable<string> users)
         {
             lv_users.Items.Clear();
             foreach (var name in users)
@@ -62,7 +62,7 @@ namespace CatFeeder
 
         private void ChooseBtn_Click(object sender, EventArgs e)
         {
-            ShowUser?.Invoke();
+            ShowOwner?.Invoke();
         }
     }
 }

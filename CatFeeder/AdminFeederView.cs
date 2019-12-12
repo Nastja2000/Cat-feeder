@@ -29,19 +29,19 @@ namespace CatFeeder
 
         public event Action ShowSch;
         public event Action GoBack;
-        public event Action<string> AddSch;
-        public event Action<string> ImportSch;
-        public event Action<string> ExportSch;
-        public event Action<string> DeleteSch;
+       // public event Action<string> AddSch;
+        public event Action<string> ImportSchedule;
+        public event Action<string> ExportSchedule;
+       // public event Action<string> DeleteSch;
 
         private void GoBackBtn_Click(object sender, EventArgs e)
         {
             GoBack?.Invoke();
         }
 
-        private void AddBtn_Click(object sender, EventArgs e)
+      /*  private void AddBtn_Click(object sender, EventArgs e)
         {
-            AddSch?.Invoke(tb_Name.Text);
+            AddSchedule?.Invoke(tb_Name.Text);
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -49,9 +49,9 @@ namespace CatFeeder
             foreach (var item in lv_users.SelectedItems)
             {
                 var lvItem = item as ListViewItem;
-                DeleteSch?.Invoke(lvItem?.Text);
+                DeleteSchedule?.Invoke(lvItem?.Text);
             }
-        }
+        }*/
 
         public void ShowSchs(IEnumerable<string> users)
         {
@@ -71,7 +71,7 @@ namespace CatFeeder
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ImportSch?.Invoke(openFileDialog.FileName);
+                ImportSchedule?.Invoke(openFileDialog.FileName);
             }
         }
 
@@ -79,7 +79,7 @@ namespace CatFeeder
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ExportSch?.Invoke(saveFileDialog.FileName);
+                ExportSchedule?.Invoke(saveFileDialog.FileName);
             }
         }
 
