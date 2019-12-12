@@ -30,8 +30,8 @@ namespace CatFeeder
 
         public event Action ShowFeeder;
         public event Action GoBack;
-        public event Action<string> AddFeeder;
-        public event Action<string> DeleteFeeder;
+        public event Action<string> addFeeder;
+        public event Action<string> deleteFeeder;
 
         private void GoBackBtn_Click(object sender, EventArgs e)
         {
@@ -40,7 +40,7 @@ namespace CatFeeder
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            AddFeeder?.Invoke(tb_Name.Text);
+            addFeeder?.Invoke(tb_Name.Text);
         }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
@@ -48,7 +48,7 @@ namespace CatFeeder
             foreach (var item in lv_users.SelectedItems)
             {
                 var lvItem = item as ListViewItem;
-                DeleteFeeder?.Invoke(lvItem?.Text);
+                deleteFeeder?.Invoke(lvItem?.Text);
             }
         }
 

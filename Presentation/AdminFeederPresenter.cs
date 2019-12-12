@@ -16,10 +16,10 @@ namespace Presentation
 
             _view = view;
             _view.ShowSch += ShowSch;
-            _view.AddSch += AddSch;
-            _view.DeleteSch += DeleteSch;
-            _view.ImportSch += ImportSch;
-            _view.ExportSch += ExportSch;
+            //_view.AddSch += AddSch;
+            //_view.DeleteSch += DeleteSch;
+            _view.ImportSchedule += ImportSchedule;
+            _view.ExportSchedule += ExportSchedule;
             _view.GoBack += ShowOwnerView;
 
             _service = service;
@@ -31,7 +31,7 @@ namespace Presentation
             _view.Close();
         }
 
-        private void DeleteSch(string name)
+        /*private void DeleteSch(string name)
         {
             _service.DeleteSch(name);
         }
@@ -39,20 +39,20 @@ namespace Presentation
         private void AddSch(string name)
         {
             _service.AddSch(name);
-        }
+        }*/
 
         private void ShowSchs()
         {
-            _view.ShowSchs(_service.GetAllUsers());
+            _view.ShowSchs(_service.GetAllSchedules());
         }
 
-        private void ImportSch(string path)
+        private void ImportSchedule(string path)
         {
             try
             {
                 using (StreamReader reader = File.OpenText(path))
                 {
-                    _service.ImportSch(reader);
+                    _service.ImportSchedule(reader);
                 }
             }
             catch (Exception ex)
@@ -61,13 +61,13 @@ namespace Presentation
             }
         }
 
-        private void ExportSch(string path)
+        private void ExportSchedule(string path)
         {
             try
             {
                 using (StreamWriter writer = File.CreateText(path))
                 {
-                    _service.ExportSch(writer);
+                    _service.ExportSchedule(writer);
                 }
             }
             catch (Exception ex)
@@ -78,7 +78,7 @@ namespace Presentation
 
         private void ShowSch()
         {
-            _kernel.Get<SchedulePresenter>().RunUser();
+            _kernel.Get<SchedulePresenter>().Run();
             //presenter.ImitationUpdated += ShowInitiative;
             _view.Show();
 

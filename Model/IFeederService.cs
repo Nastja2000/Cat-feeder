@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    interface IFeederService
+    public interface IFeederService
     {
         //TODO: Всё тут
         event Action ScheduleByOwnerUpdated;

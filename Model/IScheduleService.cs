@@ -7,7 +7,7 @@ using Model.entities;
 
 namespace Model
 {
-    interface IScheduleService
+    public interface IScheduleService
     {
         event Action ScheduleByOwnerUpdate;
 

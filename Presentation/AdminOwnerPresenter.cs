@@ -15,22 +15,22 @@ namespace Presentation
 
             _view = view;
             _view.ShowFeeder += ShowFeeder;
-            _view.AddFeeder += AddFeeder;
-            _view.DeleteFeeder += DeleteFeeder;
+            _view.addFeeder += addFeeder;
+            _view.deleteFeeder += deleteFeeder;
             _view.GoBack += ShowImitationView;
 
             _service = service;
         }
 
 
-        private void DeleteFeeder(string name)
+        private void deleteFeeder(string name)
         {
-            _service.DeleteFeeder(name);
+            _service.deleteFeeder(int.Parse(name));
         }
 
-        private void AddFeeder(string name)
+        private void addFeeder(string name)
         {
-            _service.AddFeeder(name);
+            _service.addFeeder(name);
         }
 
         private void ShowFeeder()

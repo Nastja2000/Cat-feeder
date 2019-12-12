@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    interface IAdminFeederService
+    public interface IAdminFeederService
     {
         event Action ScheduleUpdated;
 

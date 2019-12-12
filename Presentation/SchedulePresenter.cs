@@ -16,7 +16,7 @@ namespace Presentation
 
             _view = view;
             _view.Save += Save;
-            _view.AddMark += AddMark;
+            //_view.AddMark += AddMark;
             _view.GoBack += ShowImitationView;
 
             _service = service;
@@ -28,10 +28,10 @@ namespace Presentation
             _view.Close();
         }
 
-        private void AddMark(bool flag)
+       /* private void AddMark(bool flag)
         {
             _service.AddMark(flag);
-        }
+        }*/
 
         private void Save(string name)
         {
