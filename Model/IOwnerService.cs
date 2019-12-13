@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    interface IOwnerService
+    public interface IOwnerService
     {
         event Action OwnerUpdated;
 

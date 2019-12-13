@@ -33,13 +33,13 @@ namespace Presentation
 
         private void AddSch(string name)
         {
-            _service.AddSch(name);
+            _service.CreateSchedule(/*name*/);
         }
 
-        private void ShowSchs()
+     /*   private void ShowSchs()
         {
             _view.ShowSchs(_service.GetAllUsers());
-        }
+        }*/
 
         private void ImportSch(string path)
         {
@@ -47,7 +47,7 @@ namespace Presentation
             {
                 using (StreamReader reader = File.OpenText(path))
                 {
-                    _service.ImportSch(reader);
+                    _service.ImportSchedule(reader);
                 }
             }
             catch (Exception ex)
@@ -62,7 +62,7 @@ namespace Presentation
             {
                 using (StreamWriter writer = File.CreateText(path))
                 {
-                    _service.ExportSch(writer);
+                    _service.ExportSchedule(writer);
                 }
             }
             catch (Exception ex)

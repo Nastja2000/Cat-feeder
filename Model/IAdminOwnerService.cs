@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Model
 {
-    interface IAdminOwnerService
+    public interface IAdminOwnerService
     {
 
         event Action FeederUpdated;

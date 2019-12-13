@@ -15,9 +15,9 @@ namespace Presentation
             _kernel = kernel;
 
             _view = view;
-            _view.ShowSch += ShowSch;
-            _view.AddSch += AddSch;
-            _view.DeleteSch += DeleteSch;
+          //  _view.ShowSch += ShowSch;
+         //   _view.AddSch += AddSch;
+         //   _view.DeleteSch += DeleteSch;
             _view.ImportSch += ImportSch;
             _view.ExportSch += ExportSch;
             _view.GoBack += ShowOwnerView;
@@ -31,20 +31,20 @@ namespace Presentation
             _view.Close();
         }
 
-        private void DeleteSch(string name)
+       /* private void DeleteSch(string name)
         {
             _service.DeleteSch(name);
-        }
+        }*/
 
-        private void AddSch(string name)
+     /*   private void AddSch(string name)
         {
-            _service.AddSch(name);
-        }
+            _service.CreateSchedule(name);
+        }*/
 
-        private void ShowSchs()
+      /*  private void ShowSchs()
         {
             _view.ShowSchs(_service.GetAllUsers());
-        }
+        }*/
 
         private void ImportSch(string path)
         {
@@ -52,7 +52,7 @@ namespace Presentation
             {
                 using (StreamReader reader = File.OpenText(path))
                 {
-                    _service.ImportSch(reader);
+                    _service.ImportSchedule(reader);
                 }
             }
             catch (Exception ex)
@@ -67,7 +67,7 @@ namespace Presentation
             {
                 using (StreamWriter writer = File.CreateText(path))
                 {
-                    _service.ExportSch(writer);
+                    _service.ExportSchedule(writer);
                 }
             }
             catch (Exception ex)
@@ -76,13 +76,13 @@ namespace Presentation
             }
         }
 
-        private void ShowSch()
+    /*    private void ShowSch()
         {
             _kernel.Get<SchedulePresenter>().RunUser();
             //presenter.ImitationUpdated += ShowInitiative;
             _view.Show();
 
-        }
+        }*/
 
         public void Run()
         {

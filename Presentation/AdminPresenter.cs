@@ -9,28 +9,28 @@ namespace Presentation
     {
         private readonly IKernel _kernel;
         private IAdminView _view;
-        private IAdminService _service;
-        public AdminPresenter(IAdminView view, IAdminService service, IKernel kernel)
+        private IAdminMainService _service;
+        public AdminPresenter(IAdminView view, IAdminMainService service, IKernel kernel)
         {
             _kernel = kernel;
 
             _view = view;
             _view.ShowUser += ShowUser;
             _view.AddUser += AddUser;
-            _view.DeleteUser += DeleteUser;
+       //     _view.DeleteUser += DeleteUser;
             _view.GoBack += ShowImitationView;
 
             _service = service;
         }
 
-        private void DeleteUser(string name)
+        private void DeleteUser(int id)
         {
-            _service.DeleteUser(name);
+            _service.deleteOwner(id);
         }
 
         private void AddUser(string name)
         {
-            _service.AddUser(name);
+            _service.addOwner(name);
         }
 
         private void ShowUser()
@@ -41,10 +41,10 @@ namespace Presentation
 
         }
 
-        private void ShowUsers()
+     /*   private void ShowUsers()
         {
             _view.ShowUsers(_service.GetAllUsers());
-        }
+        }*/
 
         private void ShowImitationView()
         {

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Model;
 using Ninject;
@@ -15,8 +16,8 @@ namespace Presentation
             _kernel = kernel;
 
             _view = view;
-            _view.Save += Save;
-            _view.AddMark += AddMark;
+         //   _view.Save += Save;
+         //   _view.AddMark += AddMark;
             _view.GoBack += ShowImitationView;
 
             _service = service;
@@ -28,12 +29,12 @@ namespace Presentation
             _view.Close();
         }
 
-        private void AddMark(bool flag)
+     /*   private void AddMark(string flag)
         {
             _service.AddMark(flag);
-        }
+        }*/
 
-        private void Save(string name)
+        private void Save(IEnumerable<string> name)
         {
             _service.Save(name);
         }
