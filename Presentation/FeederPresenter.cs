@@ -16,10 +16,9 @@ namespace Presentation
 
             _view = view;
             _view.ShowSch += ShowSch;
-            //_view.ShowUsers += ShowUsers;
-            _view.AddSch += AddSch;
-            _view.ImportSch += ImportSch;
-            _view.ExportSch += ExportSch;
+            _view.CreateSchedule += CreateSchedule;
+            _view.ImportSchedule += ImportSchedule;
+            _view.ExportSchedule += ExportSchedule;
             _view.GoBack += ShowOwnerView;
 
             _service = service;
@@ -31,17 +30,23 @@ namespace Presentation
             _view.Close();
         }
 
-        private void AddSch(string name)
+        private void CreateSchedule(string name)
         {
             _service.CreateSchedule(/*name*/);
         }
 
+<<<<<<< HEAD
      /*   private void ShowSchs()
         {
             _view.ShowSchs(_service.GetAllUsers());
+=======
+      /*  private void ShowSchs()
+        {
+            _view.ShowSchs(_service.GetAllSchedules());
+>>>>>>> common_branch
         }*/
 
-        private void ImportSch(string path)
+        private void ImportSchedule(string path)
         {
             try
             {
@@ -56,7 +61,7 @@ namespace Presentation
             }
         }
 
-        private void ExportSch(string path)
+        private void ExportSchedule(string path)
         {
             try
             {

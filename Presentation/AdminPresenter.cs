@@ -15,25 +15,37 @@ namespace Presentation
             _kernel = kernel;
 
             _view = view;
+<<<<<<< HEAD
             _view.ShowUser += ShowUser;
             _view.AddUser += AddUser;
        //     _view.DeleteUser += DeleteUser;
+=======
+            _view.ShowOwner += ShowOwner;
+            _view.addOwner += addOwner;
+            _view.deleteOwner += deleteOwner;
+>>>>>>> common_branch
             _view.GoBack += ShowImitationView;
 
             _service = service;
         }
 
+<<<<<<< HEAD
         private void DeleteUser(int id)
         {
             _service.deleteOwner(id);
+=======
+        private void deleteOwner(string name)
+        {
+            _service.deleteOwner(int.Parse(name));
+>>>>>>> common_branch
         }
 
-        private void AddUser(string name)
+        private void addOwner(string name)
         {
             _service.addOwner(name);
         }
 
-        private void ShowUser()
+        private void ShowOwner()
         {
             _kernel.Get<AdminOwnerPresenter>().Run();
             //presenter.ImitationUpdated += ShowInitiative;
@@ -41,10 +53,17 @@ namespace Presentation
 
         }
 
+<<<<<<< HEAD
      /*   private void ShowUsers()
         {
             _view.ShowUsers(_service.GetAllUsers());
         }*/
+=======
+        private void ShowOwners()
+        {
+            _view.ShowOwners(_service.GetAllOwners());
+        }
+>>>>>>> common_branch
 
         private void ShowImitationView()
         {

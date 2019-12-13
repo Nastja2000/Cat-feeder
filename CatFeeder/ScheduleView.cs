@@ -29,7 +29,7 @@ namespace CatFeeder
 
         public event Action GoBack;
         public event Action<string> Save;
-        public event Action<bool> AddMark;
+        //public event Action<bool> AddMark;
 
         public string TurnDurationLimit
         {
@@ -42,11 +42,11 @@ namespace CatFeeder
             GoBack?.Invoke();
         }
 
-        private void AddBtn_Click(object sender, EventArgs e)
+        /*private void AddBtn_Click(object sender, EventArgs e)
         {
             bool flag = true;
             AddMark?.Invoke(flag);
-        }
+        }*/
 
         public void ShowError(string message)
         {

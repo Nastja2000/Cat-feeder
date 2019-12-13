@@ -8,7 +8,11 @@ using System.Threading.Tasks;
 
 namespace Model
 {
+<<<<<<< HEAD
   public  interface IAdminFeederService
+=======
+    public interface IAdminFeederService
+>>>>>>> common_branch
     {
         event Action ScheduleUpdated;
 

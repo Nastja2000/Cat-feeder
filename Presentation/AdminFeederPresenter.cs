@@ -15,11 +15,19 @@ namespace Presentation
             _kernel = kernel;
 
             _view = view;
+<<<<<<< HEAD
           //  _view.ShowSch += ShowSch;
          //   _view.AddSch += AddSch;
          //   _view.DeleteSch += DeleteSch;
             _view.ImportSch += ImportSch;
             _view.ExportSch += ExportSch;
+=======
+            _view.ShowSch += ShowSch;
+            //_view.AddSch += AddSch;
+            //_view.DeleteSch += DeleteSch;
+            _view.ImportSchedule += ImportSchedule;
+            _view.ExportSchedule += ExportSchedule;
+>>>>>>> common_branch
             _view.GoBack += ShowOwnerView;
 
             _service = service;
@@ -31,22 +39,34 @@ namespace Presentation
             _view.Close();
         }
 
+<<<<<<< HEAD
        /* private void DeleteSch(string name)
+=======
+        /*private void DeleteSch(string name)
+>>>>>>> common_branch
         {
             _service.DeleteSch(name);
         }*/
 
      /*   private void AddSch(string name)
         {
+<<<<<<< HEAD
             _service.CreateSchedule(name);
+=======
+            _service.AddSch(name);
+>>>>>>> common_branch
         }*/
 
       /*  private void ShowSchs()
         {
+<<<<<<< HEAD
             _view.ShowSchs(_service.GetAllUsers());
+=======
+            _view.ShowSchs(_service.GetAllSchedules());
+>>>>>>> common_branch
         }*/
 
-        private void ImportSch(string path)
+        private void ImportSchedule(string path)
         {
             try
             {
@@ -61,7 +81,7 @@ namespace Presentation
             }
         }
 
-        private void ExportSch(string path)
+        private void ExportSchedule(string path)
         {
             try
             {
@@ -78,7 +98,7 @@ namespace Presentation
 
     /*    private void ShowSch()
         {
-            _kernel.Get<SchedulePresenter>().RunUser();
+            _kernel.Get<SchedulePresenter>().Run();
             //presenter.ImitationUpdated += ShowInitiative;
             _view.Show();
 

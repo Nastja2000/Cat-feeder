@@ -15,20 +15,31 @@ namespace Presentation
 
             _view = view;
             _view.ShowFeeder += ShowFeeder;
+<<<<<<< HEAD
             _view.AddFeeder += AddFeeder;
         //    _view.DeleteFeeder += DeleteFeeder;
+=======
+            _view.addFeeder += addFeeder;
+            _view.deleteFeeder += deleteFeeder;
+>>>>>>> common_branch
             _view.GoBack += ShowImitationView;
 
             _service = service;
         }
 
 
+<<<<<<< HEAD
         private void DeleteFeeder(int id)
         {
             _service.deleteFeeder(id);
+=======
+        private void deleteFeeder(string name)
+        {
+            _service.deleteFeeder(int.Parse(name));
+>>>>>>> common_branch
         }
 
-        private void AddFeeder(string name)
+        private void addFeeder(string name)
         {
             _service.addFeeder(name);
         }
@@ -41,7 +52,11 @@ namespace Presentation
 
         }
 
+<<<<<<< HEAD
     /*    private void ShowFeeders()
+=======
+       /* private void ShowFeeders()
+>>>>>>> common_branch
         {
             _view.ShowFeeders(_service.GetAllFeeders());
         }*/

@@ -60,6 +60,9 @@
             this.lv_Food = new System.Windows.Forms.ListView();
             this.label9 = new System.Windows.Forms.Label();
             this.tb_TurnDurationLimit = new System.Windows.Forms.TextBox();
+            this.tb_name = new System.Windows.Forms.TextBox();
+            this.nameButton = new System.Windows.Forms.Button();
+            this.lb_name = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -327,7 +330,7 @@
             // lv_Food
             // 
             this.lv_Food.HideSelection = false;
-            this.lv_Food.Location = new System.Drawing.Point(49, 52);
+            this.lv_Food.Location = new System.Drawing.Point(49, 74);
             this.lv_Food.Name = "lv_Food";
             this.lv_Food.Size = new System.Drawing.Size(298, 243);
             this.lv_Food.TabIndex = 28;
@@ -353,11 +356,43 @@
             this.tb_TurnDurationLimit.TabIndex = 30;
             this.tb_TurnDurationLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
+            // tb_name
+            // 
+            this.tb_name.Location = new System.Drawing.Point(49, 49);
+            this.tb_name.Margin = new System.Windows.Forms.Padding(4);
+            this.tb_name.Name = "tb_name";
+            this.tb_name.Size = new System.Drawing.Size(196, 22);
+            this.tb_name.TabIndex = 31;
+            // 
+            // nameButton
+            // 
+            this.nameButton.Location = new System.Drawing.Point(253, 43);
+            this.nameButton.Margin = new System.Windows.Forms.Padding(4);
+            this.nameButton.Name = "nameButton";
+            this.nameButton.Size = new System.Drawing.Size(100, 28);
+            this.nameButton.TabIndex = 32;
+            this.nameButton.Text = "Set Up";
+            this.nameButton.UseVisualStyleBackColor = true;
+            // 
+            // lb_name
+            // 
+            this.lb_name.AutoSize = true;
+            this.lb_name.Location = new System.Drawing.Point(46, 28);
+            this.lb_name.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.lb_name.Name = "lb_name";
+            this.lb_name.Size = new System.Drawing.Size(66, 17);
+            this.lb_name.TabIndex = 33;
+            this.lb_name.Text = "Name";
+            
+            // 
             // ImitationView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.lb_name);
+            this.Controls.Add(this.nameButton);
+            this.Controls.Add(this.tb_name);
             this.Controls.Add(this.tb_TurnDurationLimit);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.lv_Food);
@@ -428,6 +463,9 @@
         private System.Windows.Forms.ListView lv_Food;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox tb_TurnDurationLimit;
+        private System.Windows.Forms.TextBox tb_name;
+        private System.Windows.Forms.Button nameButton;
+        private System.Windows.Forms.Label lb_name;
     }
 }
 

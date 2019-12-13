@@ -16,7 +16,8 @@ namespace CatFeeder
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new ImitationView());
+            //TODO context
+            Application.Run(new ImitationView(new ApplicationContext()));
         }
     }
 }
