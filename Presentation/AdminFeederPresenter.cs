@@ -41,10 +41,10 @@ namespace Presentation
             _service.AddSch(name);
         }*/
 
-        private void ShowSchs()
+      /*  private void ShowSchs()
         {
             _view.ShowSchs(_service.GetAllSchedules());
-        }
+        }*/
 
         private void ImportSchedule(string path)
         {

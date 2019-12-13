@@ -41,10 +41,10 @@ namespace Presentation
 
         }
 
-        private void ShowFeeders()
+     /*   private void ShowFeeders()
         {
             _view.ShowFeeders(_service.GetAllFeeders());
-        }
+        }*/
 
         private void ShowImitationView()
         {

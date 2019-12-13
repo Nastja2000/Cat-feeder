@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.IO;
 using Model;
 using Ninject;
@@ -33,9 +35,11 @@ namespace Presentation
             _service.AddMark(flag);
         }*/
 
-        private void Save(string name)
+        private void Save( string name)
         {
-            _service.Save(name);
+            //TODO
+            IEnumerable<string> fields = null;
+            _service.Save(fields);
         }
 
         public void Run()

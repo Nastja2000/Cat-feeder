@@ -78,10 +78,10 @@ namespace Presentation
         }
 
 
-        private void Step()
+  /*      private void Step()
         {
             _imitationService.ImitationDurationUpdated();
-        }
+        }*/
 
         private void setStepSize()
         {
