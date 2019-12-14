@@ -6,17 +6,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Model.services
 {
-<<<<<<< HEAD
-  public  interface IAdminFeederService
-=======
-    public interface IAdminFeederService
->>>>>>> common_branch
+
+    public interface IFeederService
     {
         event Action ScheduleUpdated;
 
-        IEnumerable<Schedule> GetAllSchedules();
+        IEnumerable<Schedule> GetAllSchedules(int id);
         //findSchedules(???)
         void ImportSchedule(StreamReader reader);
         void ExportSchedule(StreamWriter writer);

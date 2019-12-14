@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Model;
+using Model.services;
 using Ninject;
 
 namespace Presentation

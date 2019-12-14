@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Model;
+using Model.services;
 using Ninject;
 
 namespace Presentation
@@ -9,25 +10,17 @@ namespace Presentation
     {
         private readonly IKernel _kernel;
         private IAdminFeederView _view;
-        private IAdminFeederService _service;
-        public AdminFeederPresenter(IAdminFeederView view, IAdminFeederService service, IKernel kernel)
+        private IFeederService _service;
+        public AdminFeederPresenter(IAdminFeederView view, IFeederService service, IKernel kernel)
         {
             _kernel = kernel;
 
             _view = view;
-<<<<<<< HEAD
-          //  _view.ShowSch += ShowSch;
-         //   _view.AddSch += AddSch;
-         //   _view.DeleteSch += DeleteSch;
-            _view.ImportSch += ImportSch;
-            _view.ExportSch += ExportSch;
-=======
-            _view.ShowSch += ShowSch;
-            //_view.AddSch += AddSch;
+
+            //_view.ShowSch += ShowSch;
             //_view.DeleteSch += DeleteSch;
             _view.ImportSchedule += ImportSchedule;
             _view.ExportSchedule += ExportSchedule;
->>>>>>> common_branch
             _view.GoBack += ShowOwnerView;
 
             _service = service;
@@ -39,31 +32,13 @@ namespace Presentation
             _view.Close();
         }
 
-<<<<<<< HEAD
-       /* private void DeleteSch(string name)
-=======
         /*private void DeleteSch(string name)
->>>>>>> common_branch
         {
             _service.DeleteSch(name);
         }*/
-
-     /*   private void AddSch(string name)
+        /*  private void ShowSchs()
         {
-<<<<<<< HEAD
-            _service.CreateSchedule(name);
-=======
-            _service.AddSch(name);
->>>>>>> common_branch
-        }*/
-
-      /*  private void ShowSchs()
-        {
-<<<<<<< HEAD
-            _view.ShowSchs(_service.GetAllUsers());
-=======
             _view.ShowSchs(_service.GetAllSchedules());
->>>>>>> common_branch
         }*/
 
         private void ImportSchedule(string path)

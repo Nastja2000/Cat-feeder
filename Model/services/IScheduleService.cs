@@ -5,16 +5,17 @@ using System.Text;
 using System.Threading.Tasks;
 using Model.entities;
 
-namespace Model
+namespace Model.services
 {
     public interface IScheduleService
     {
         event Action ScheduleByOwnerUpdate;
 
-        Schedule GetSchedule();
+        Schedule GetSchedule(int id);
      
         //testS
         void Save(IEnumerable<string> info);
+       // void AddMark(string mark);
         //+log(Schedule)
     }
 }

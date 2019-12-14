@@ -29,7 +29,7 @@ namespace CatFeeder
 
         public event Action GoBack;
         public event Action<string> Save;
-        //public event Action<bool> AddMark;
+      //  public event Action<bool> AddMark;
 
         public string TurnDurationLimit
         {

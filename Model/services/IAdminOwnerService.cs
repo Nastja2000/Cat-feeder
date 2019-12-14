@@ -5,17 +5,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Model
+namespace Model.services
 {
     public interface IAdminOwnerService
     {
 
         event Action FeederUpdated;
 
-        IEnumerable<Feeder> GetAllFeeders();
+        IEnumerable<Feeder> GetAllFeeders(int id);
 
-        void addFeeder(string name);
-        void deleteFeeder(int Id);
+        void addFeeder(int id, string name);
+        void deleteFeeder(int ownerId, int Id);
         //+log(owner: Owner)
 
     }

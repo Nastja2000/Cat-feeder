@@ -47,24 +47,29 @@
     <Compile Include="entities\Feeder.cs" />
     <Compile Include="entities\Owner.cs" />
     <Compile Include="entities\Schedule.cs" />
-    <Compile Include="IAdminFeederService.cs" />
-    <Compile Include="IAdminOwnerService.cs" />
-    <Compile Include="IAdminMainService.cs" />
-    <Compile Include="IFeederService.cs" />
-    <Compile Include="IImitationService.cs" />
-    <Compile Include="IOwnerService.cs" />
-    <Compile Include="IScheduleService.cs" />
+    <Compile Include="services\IFeederService.cs" />
+    <Compile Include="services\IAdminOwnerService.cs" />
+    <Compile Include="services\IAdminMainService.cs" />
+    <Compile Include="services\IOwnerFeederService.cs" />
+    <Compile Include="services\IImitationService.cs" />
+    <Compile Include="services\IOwnerService.cs" />
+    <Compile Include="services\IScheduleService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="repository\IFeederRepository.cs" />
     <Compile Include="repository\IOwnerRepository.cs" />
     <Compile Include="repository\IRepository.cs" />
     <Compile Include="repository\IScheduleRepository.cs" />
+    <Compile Include="repository\realization\ScheduleRepository.cs" />
+    <Compile Include="repository\realization\OwnerRepository.cs" />
+    <Compile Include="repository\realization\FeederRepository.cs" />
+    <Compile Include="services\realization\AdminFeederService.cs" />
+    <Compile Include="services\realization\AdminOwnerService.cs" />
+    <Compile Include="services\realization\OwnerFeederService.cs" />
+    <Compile Include="services\realization\OwnerService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="services\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

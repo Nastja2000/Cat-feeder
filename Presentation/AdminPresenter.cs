@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Model;
+using Model.services;
 using Ninject;
 
 namespace Presentation
@@ -15,29 +16,19 @@ namespace Presentation
             _kernel = kernel;
 
             _view = view;
-<<<<<<< HEAD
-            _view.ShowUser += ShowUser;
-            _view.AddUser += AddUser;
-       //     _view.DeleteUser += DeleteUser;
-=======
+
             _view.ShowOwner += ShowOwner;
             _view.addOwner += addOwner;
             _view.deleteOwner += deleteOwner;
->>>>>>> common_branch
+
             _view.GoBack += ShowImitationView;
 
             _service = service;
         }
 
-<<<<<<< HEAD
-        private void DeleteUser(int id)
-        {
-            _service.deleteOwner(id);
-=======
         private void deleteOwner(string name)
         {
             _service.deleteOwner(int.Parse(name));
->>>>>>> common_branch
         }
 
         private void addOwner(string name)
@@ -53,17 +44,12 @@ namespace Presentation
 
         }
 
-<<<<<<< HEAD
-     /*   private void ShowUsers()
-        {
-            _view.ShowUsers(_service.GetAllUsers());
-        }*/
-=======
+
         private void ShowOwners()
         {
             _view.ShowOwners(_service.GetAllOwners());
         }
->>>>>>> common_branch
+
 
         private void ShowImitationView()
         {

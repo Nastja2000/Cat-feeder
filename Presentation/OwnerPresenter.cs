@@ -1,5 +1,6 @@
 ﻿using System;
 using Model;
+using Model.services;
 using Ninject;
 
 namespace Presentation
@@ -15,25 +16,16 @@ namespace Presentation
 
             _view = view;
             _view.ShowFeeder += ShowFeeder;
-<<<<<<< HEAD
-         //   _view.AddFeeder += AddFeeder;
-         //   _view.DeleteFeeder += DeleteFeeder;
-=======
            // _view.AddFeeder += AddFeeder;
            // _view.DeleteFeeder += DeleteFeeder;
->>>>>>> common_branch
             _view.GoBack += ShowImitationView;
 
             _service = service;
         }
 
-<<<<<<< HEAD
 
-    /*    private void DeleteFeeder(string name)
-=======
         /*
         private void DeleteFeeder(string name)
->>>>>>> common_branch
         {
             _service.DeleteFeeder(name);
         }*/
@@ -51,11 +43,7 @@ namespace Presentation
 
         }
 
-<<<<<<< HEAD
         /*private void ShowFeeders()
-=======
-     /*   private void ShowFeeders()
->>>>>>> common_branch
         {
             _view.ShowFeeders(_service.GetAllFeeders());
         }*/

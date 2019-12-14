@@ -9,7 +9,10 @@ namespace Model.repository
 {
     interface IFeederRepository : IRepository<Feeder>
     {
-        IEnumerable<Feeder> readByOwner(Owner owner);
+        public IEnumerable<Feeder> readByOwner(Owner owner);
+        public IEnumerable<Schedule> GetSchedules(int id);
+
+
         /* возможно добавим позднее
         +readByType???*/
 
