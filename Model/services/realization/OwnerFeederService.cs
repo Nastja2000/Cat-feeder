@@ -54,10 +54,10 @@ namespace Model.services.realization
         {
             try
             {
-                //TODO а прокинет ли?
+                //TODO поменять void na int и не бросать ошибки а на презенторе проверять получилось ли
                 Feeder feeder = _feederRepository.read(feederId);
                 //TODO спросить можно ли так
-                if (feeder.activeSchedule.id == scheduleId)
+                if (feeder.activeSchedule?.id == scheduleId)
                 {
                     //TODO проверить
                     throw new InvalidOperationException();

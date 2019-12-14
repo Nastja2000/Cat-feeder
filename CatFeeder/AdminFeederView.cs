@@ -25,6 +25,7 @@ namespace CatFeeder
             _context.MainForm = this;
             ShowError(string.Empty);
             base.Show();
+            
         }
 
         public event Action ShowSch;

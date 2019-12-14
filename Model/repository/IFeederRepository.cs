@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Model.repository
 {
-    interface IFeederRepository : IRepository<Feeder>
+    public interface IFeederRepository : IRepository<Feeder>
     {
-        public IEnumerable<Feeder> readByOwner(Owner owner);
-        public IEnumerable<Schedule> GetSchedules(int id);
+         IEnumerable<Feeder> readByOwner(Owner owner);
+         IEnumerable<Schedule> GetSchedules(int id);
 
 
         /* возможно добавим позднее

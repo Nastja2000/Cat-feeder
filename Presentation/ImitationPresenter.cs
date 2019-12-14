@@ -68,7 +68,7 @@ namespace Presentation
         {
             _kernel.Get<OwnerPresenter>().Run();
             //presenter.ImitationUpdated += ShowInitiative;
-            _view.Show();
+            _view.Close();
         }
 
         private void ShowAdmin()

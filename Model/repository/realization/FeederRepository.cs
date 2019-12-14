@@ -6,14 +6,14 @@ using System.Threading.Tasks;
 using Model.entities;
 
 //TODO фундаментально: список доступных расписаний по сути маленький репозиторий для каждой кормушки
-//ИЛИ хранить id и доставать из общего списка по id
-//Соотвественно 1 репозиторий = 1 сущьность, или можно обращаться к соседним?
-//Так же вопрос : существует ли тут аналог "сессии" или нам свой создать?
-//обращаться из одного сервиса в другой?
+//ИЛИ хранить id и доставать из общего списка по id? всё храним, а разделяем на этапе методов в репозитории
+//Соотвественно 1 репозиторий = 1 сущьность, или можно обращаться к соседним? репозитории дергают друг друга
+//Так же вопрос : существует ли тут аналог "сессии" или нам свой создать? существует, осталось найти 
+//обращаться из одного сервиса в другой? можно
 
 namespace Model.repository.realization
 {
-    class FeederRepository : IFeederRepository
+    public class FeederRepository : IFeederRepository
     {
         private static List<Feeder> _data = new List<Feeder>();
         private static int _end_index = 0;
@@ -38,10 +38,8 @@ namespace Model.repository.realization
 
         public IEnumerable<Feeder> readAll()
         {
-            List<Feeder> copy = new List<Feeder>();
-            //TODO глубокое копирование??;
-            copy.AddRange(_data);
-            return copy;
+            //TODO vezde
+            return _data;
         }
 
         public IEnumerable<Feeder> readByOwner(Owner owner)

@@ -39,7 +39,7 @@ namespace Presentation
         {
             _kernel.Get<FeederPresenter>().Run();
             //presenter.ImitationUpdated += ShowInitiative;
-            _view.Show();
+          //  _view.Show();
 
         }
 
