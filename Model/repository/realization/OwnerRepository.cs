@@ -9,6 +9,8 @@ namespace Model.repository.realization
 {
     class OwnerRepository : IOwnerRepository
     {
+
+        private IFeederRepository _feederRepository = new FeederRepository();
         private static List<Owner> _data = new List<Owner>();
         private static int _end_index = 0;
         public int create(Owner obj)
@@ -22,6 +24,11 @@ namespace Model.repository.realization
         //TODO
         public void delete(int id)
         {
+            List<Feeder> feeders = GetFeeders(id).ToList();
+            foreach (Feeder feeder in feeders)
+            {
+                _feederRepository.delete(feeder.id);
+            }
             _data.RemoveAll(c => c.id == id);
         }
 
@@ -41,6 +48,12 @@ namespace Model.repository.realization
         {
 
             return _data.Find(c => c.id == id);
+        }
+
+        public Owner readByName(string name)
+        {
+
+            return _data.Find(c => c.name == name);
         }
 
         public IEnumerable<Owner> readAll()

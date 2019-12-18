@@ -9,7 +9,7 @@ using Model.repository.realization;
 
 namespace Model.services.realization
 {
-    class AdminOwnerService : IAdminOwnerService
+    public class AdminOwnerService : IAdminOwnerService
     {
         private IOwnerRepository _ownerRepository = new OwnerRepository();
         private IFeederRepository _feederRepository = new FeederRepository();

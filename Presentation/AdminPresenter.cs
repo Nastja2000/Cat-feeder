@@ -47,6 +47,7 @@ namespace Presentation
 
         private void ShowOwners()
         {
+            //TODO разобраться с тем, передавать ли id
             _view.ShowOwners(_service.GetAllOwners());
         }
 
@@ -59,6 +60,7 @@ namespace Presentation
 
         public void Run()
         {
+            ShowOwners();
             _view.Show();
         }
 

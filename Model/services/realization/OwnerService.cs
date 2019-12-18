@@ -9,7 +9,7 @@ using Model.repository.realization;
 
 namespace Model.services.realization
 {
-    class OwnerService : IOwnerService
+    public class OwnerService : IOwnerService
     {
         private IOwnerRepository _ownerRepository = new OwnerRepository();
         public event Action OwnerUpdated;

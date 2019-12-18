@@ -62,10 +62,13 @@
     <Compile Include="repository\realization\ScheduleRepository.cs" />
     <Compile Include="repository\realization\OwnerRepository.cs" />
     <Compile Include="repository\realization\FeederRepository.cs" />
-    <Compile Include="services\realization\AdminFeederService.cs" />
+    <Compile Include="services\realization\AdminMainService.cs" />
+    <Compile Include="services\realization\FeederService.cs" />
     <Compile Include="services\realization\AdminOwnerService.cs" />
+    <Compile Include="services\realization\ImitationService.cs" />
     <Compile Include="services\realization\OwnerFeederService.cs" />
     <Compile Include="services\realization\OwnerService.cs" />
+    <Compile Include="services\realization\ScheduleService.cs" />
   </ItemGroup>
   <ItemGroup>
     <Reference Include="System" />

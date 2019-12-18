@@ -10,6 +10,6 @@ namespace Model.repository
     interface IOwnerRepository : IRepository<Owner>
     {
         //    IEnumerable<Schedule> GetSchedules(int id);
-        IEnumerable<Feeder> GetFeeders(int id);
+        IEnumerable<Feeder> GetFeeders(int id);        public Owner readByName(string name);
     }
 }

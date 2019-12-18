@@ -8,7 +8,7 @@ using Model.repository.realization;
 
 namespace Model.services.realization
 {
-    class OwnerFeederService : IOwnerFeederService
+    public class OwnerFeederService : IOwnerFeederService
     {
         private IFeederRepository _feederRepository = new FeederRepository();
         private IScheduleRepository _scheduleRepository = new ScheduleRepository();

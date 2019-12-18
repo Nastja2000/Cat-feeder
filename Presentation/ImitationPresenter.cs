@@ -88,7 +88,7 @@ namespace Presentation
         {
             if (int.TryParse(_view.StepSizeVal, out int stepSizeVal))
             {
-                _imitationService.setStepSize(stepSizeVal);
+                _imitationService.StepSize = stepSizeVal;
             }
             else
             {
@@ -113,7 +113,7 @@ namespace Presentation
         {
             if (int.TryParse(_view.EatingQuantVal, out int eatingQuantVal))
             {
-                _imitationService.setEatingQuan(eatingQuantVal);
+                _imitationService.EatingQuan = eatingQuantVal;
             }
             else
             {
@@ -125,7 +125,7 @@ namespace Presentation
         {
             if (int.TryParse(_view.EatingFreqVal, out int eatingFreqVal))
             {
-                _imitationService.setEatingFreq(eatingFreqVal);
+                _imitationService.EatingFreq = eatingFreqVal;
             }
             else
             {

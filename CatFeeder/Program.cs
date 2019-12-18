@@ -5,7 +5,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using Ninject;
 using Presentation;
-
+using Model.services;
+using Model.services.realization;
 
 namespace CatFeeder
 {
@@ -21,14 +22,18 @@ namespace CatFeeder
             kernel.Bind<ApplicationContext>().ToConstant(new ApplicationContext());
             kernel.Bind<IOwnerView>().To<OwnerView>();
             kernel.Bind<IImitationView>().To<ImitationView>();
-            /*kernel.Bind<ICharacterView>().To<CharacterView>();
-            kernel.Bind<IAddInitiativeView>().To<AddInitiativeView>();
-            kernel.Bind<IStatisticsView>().To<StatisticsView>();
-            kernel.Bind<ICombatService>().To<CombatService>();
-            kernel.Bind<ICharacterService>().To<CharacterService>();
-            kernel.Bind<IAddInitiativeService>().To<AddInitiativeService>();
-            kernel.Bind<IRepository<Character>>().To<CharacterRepository>();
-            kernel.Bind<IRepository<InitiativeEntry>>().To<InitiativeEntryRepository>();*/
+            kernel.Bind<IFeederView>().To<FeederView>();
+            kernel.Bind<IAdminView>().To<AdminView>();
+            
+            kernel.Bind<IAdminMainService>().To<AdminMainService>();
+            kernel.Bind<IAdminOwnerService>().To<AdminOwnerService>();
+            kernel.Bind<IFeederService>().To<FeederService>();
+            kernel.Bind<IImitationService>().To<ImitationService>();
+            kernel.Bind<IOwnerFeederService>().To<OwnerFeederService>();
+            kernel.Bind<IOwnerService>().To<OwnerService>();
+            kernel.Bind<IScheduleService>().To<ScheduleService>();
+            
+
 
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
