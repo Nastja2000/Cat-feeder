@@ -32,10 +32,11 @@
             this.ChooseBtn = new System.Windows.Forms.Button();
             this.lbl_Error = new System.Windows.Forms.Label();
             this.tb_Name = new System.Windows.Forms.TextBox();
-            this.DeleteBtn = new System.Windows.Forms.Button();
-            this.AddBtn = new System.Windows.Forms.Button();
             this.lv_users = new System.Windows.Forms.ListView();
             this.label1 = new System.Windows.Forms.Label();
+            this.button1 = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // GoBackBtn
@@ -46,6 +47,7 @@
             this.GoBackBtn.TabIndex = 26;
             this.GoBackBtn.Text = "Back ";
             this.GoBackBtn.UseVisualStyleBackColor = true;
+            this.GoBackBtn.Click += new System.EventHandler(this.GoBackBtn_Click);
             // 
             // ChooseBtn
             // 
@@ -56,6 +58,7 @@
             this.ChooseBtn.TabIndex = 25;
             this.ChooseBtn.Text = "Choose";
             this.ChooseBtn.UseVisualStyleBackColor = true;
+            this.ChooseBtn.Click += new System.EventHandler(this.ChooseBtn_Click);
             // 
             // lbl_Error
             // 
@@ -76,26 +79,6 @@
             this.tb_Name.Size = new System.Drawing.Size(150, 28);
             this.tb_Name.TabIndex = 23;
             // 
-            // DeleteBtn
-            // 
-            this.DeleteBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteBtn.Location = new System.Drawing.Point(627, 268);
-            this.DeleteBtn.Name = "DeleteBtn";
-            this.DeleteBtn.Size = new System.Drawing.Size(102, 37);
-            this.DeleteBtn.TabIndex = 22;
-            this.DeleteBtn.Text = "Delete ";
-            this.DeleteBtn.UseVisualStyleBackColor = true;
-            // 
-            // AddBtn
-            // 
-            this.AddBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddBtn.Location = new System.Drawing.Point(652, 195);
-            this.AddBtn.Name = "AddBtn";
-            this.AddBtn.Size = new System.Drawing.Size(102, 37);
-            this.AddBtn.TabIndex = 21;
-            this.AddBtn.Text = "Add ";
-            this.AddBtn.UseVisualStyleBackColor = true;
-            // 
             // lv_users
             // 
             this.lv_users.HideSelection = false;
@@ -115,17 +98,47 @@
             this.label1.TabIndex = 19;
             this.label1.Text = "Choose or add a feeder";
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button1.Location = new System.Drawing.Point(652, 195);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(102, 37);
+            this.button1.TabIndex = 27;
+            this.button1.Text = "Add";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.AddBtn_Click);
+            // 
+            // button2
+            // 
+            this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.button2.Location = new System.Drawing.Point(635, 268);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(102, 37);
+            this.button2.TabIndex = 28;
+            this.button2.Text = "Delete ";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.DeleteBtn_Click);
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(0, 0);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 0;
+            // 
             // AdminOwnerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.GoBackBtn);
             this.Controls.Add(this.ChooseBtn);
             this.Controls.Add(this.lbl_Error);
             this.Controls.Add(this.tb_Name);
-            this.Controls.Add(this.DeleteBtn);
-            this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.lv_users);
             this.Controls.Add(this.label1);
             this.Name = "AdminOwnerView";
@@ -141,9 +154,10 @@
         private System.Windows.Forms.Button ChooseBtn;
         private System.Windows.Forms.Label lbl_Error;
         private System.Windows.Forms.TextBox tb_Name;
-        private System.Windows.Forms.Button DeleteBtn;
-        private System.Windows.Forms.Button AddBtn;
         private System.Windows.Forms.ListView lv_users;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.Button button3;
     }
 }

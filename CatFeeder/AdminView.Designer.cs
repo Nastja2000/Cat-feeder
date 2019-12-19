@@ -41,7 +41,7 @@
             // AddBtn
             // 
             this.AddBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.AddBtn.Location = new System.Drawing.Point(652, 148);
+            this.AddBtn.Location = new System.Drawing.Point(668, 148);
             this.AddBtn.Name = "AddBtn";
             this.AddBtn.Size = new System.Drawing.Size(102, 37);
             this.AddBtn.TabIndex = 7;
@@ -129,9 +129,9 @@
             this.Controls.Add(this.tb_Name);
             this.Controls.Add(this.DeleteBtn);
             this.Controls.Add(this.lv_users);
-            this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.GoBackBtn);
             this.Controls.Add(this.label1);
+            this.Controls.Add(this.AddBtn);
             this.Name = "AdminView";
             this.Text = "AdminForm";
             this.ResumeLayout(false);

@@ -63,18 +63,12 @@ namespace CatFeeder
             }
         }
 
-        public void ShowError(string message)
-        {
-            lbl_Error.Text = message;
-        }
+        //public void ShowError(string message)
+        //{
+        //    lbl_Error.Text = message;
+        //}
 
-        private void btn_Import_Click(object sender, EventArgs e)
-        {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
-            {
-                ImportSchedule?.Invoke(openFileDialog.FileName);
-            }
-        }
+
 
         private void btn_Export_Click(object sender, EventArgs e)
         {
@@ -84,9 +78,18 @@ namespace CatFeeder
             }
         }
 
-        private void ChooseBtn_Click_1(object sender, EventArgs e)
+        private void ChooseBtn_Click(object sender, EventArgs e)
         {
+            //TODO переход на админский schedule который по сути обычный shedule только с запретом на изменение 
             ShowSch?.Invoke();
+        }
+
+        private void btn_Import_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+                ImportSchedule?.Invoke(openFileDialog.FileName);
+            }
         }
     }
 }

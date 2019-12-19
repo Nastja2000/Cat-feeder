@@ -10,9 +10,9 @@ namespace Model.services
     public interface IAdminOwnerService
     {
 
-        event Action FeederUpdated;
+        event Action<int> OwnerUpdated;
 
-        IEnumerable<Feeder> GetAllFeeders(int id);
+        IEnumerable<string> GetAllFeeders(int id);
 
         void addFeeder(int id, string name);
         void deleteFeeder(int ownerId, int Id);

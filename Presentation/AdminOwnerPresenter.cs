@@ -13,7 +13,7 @@ namespace Presentation
         public AdminOwnerPresenter(IAdminOwnerView view, IAdminOwnerService service, IKernel kernel)
         {
             _kernel = kernel;
-
+            _service = service;
             _view = view;
             _view.ShowFeeder += ShowFeeder;
 
@@ -21,7 +21,7 @@ namespace Presentation
             _view.deleteFeeder += deleteFeeder;
             _view.GoBack += ShowImitationView;
 
-            _service = service;
+            _service.OwnerUpdated += ShowFeeders; 
         }
 
 
@@ -47,10 +47,10 @@ namespace Presentation
 
         }
 
-       /* private void ShowFeeders()
+        private void ShowFeeders(int id)
         {
-            _view.ShowFeeders(_service.GetAllFeeders());
-        }*/
+            _view.ShowFeeders(_service.GetAllFeeders(id));
+        }
 
         private void ShowImitationView()
         {
@@ -59,9 +59,9 @@ namespace Presentation
         }
 
 
-        public void Run()
+        public void Run(int id)
         {
-            // ShowFeeders();
+             ShowFeeders(id);
             _view.Show();
         }
     }

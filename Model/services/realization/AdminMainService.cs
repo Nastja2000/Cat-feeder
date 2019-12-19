@@ -22,6 +22,7 @@ namespace Model.services.realization
                 owner = new Owner();
                 owner.name = name;
                 owner.id = _ownerRepository.create(owner);
+                OwnersUpdated?.Invoke();
             }
         }
 
@@ -42,7 +43,6 @@ namespace Model.services.realization
             foreach (Owner owner in owners)
             {
                 names.Add(owner.name);
-                OwnersUpdated?.Invoke();
             }
            return names;
         }
