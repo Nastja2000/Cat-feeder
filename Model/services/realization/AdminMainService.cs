@@ -12,7 +12,7 @@ namespace Model.services.realization
     public class AdminMainService : IAdminMainService
     {
         private IOwnerRepository _ownerRepository = new OwnerRepository();
-        public event Action OwnerUpdated;
+        public event Action OwnersUpdated;
 
         public void addOwner(string name)
         {
@@ -42,6 +42,7 @@ namespace Model.services.realization
             foreach (Owner owner in owners)
             {
                 names.Add(owner.name);
+                OwnersUpdated?.Invoke();
             }
            return names;
         }

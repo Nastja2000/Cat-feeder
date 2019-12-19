@@ -9,7 +9,7 @@ namespace Model.services
 {
     public interface IAdminMainService
     {
-        event Action OwnerUpdated;
+        event Action OwnersUpdated;
 
         //TODO разобраться с тем, передавать ли id
         IEnumerable<string> GetAllOwners();

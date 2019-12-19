@@ -49,7 +49,9 @@ namespace Presentation
             {
                 using (StreamReader reader = File.OpenText(path))
                 {
-                    _service.ImportSchedule(reader);
+                    //TODO разберись c id
+                    int id = 0;
+                    _service.ImportSchedule(reader, id);
                 }
             }
             catch (Exception ex)
@@ -64,7 +66,9 @@ namespace Presentation
             {
                 using (StreamWriter writer = File.CreateText(path))
                 {
-                    _service.ExportSchedule(writer);
+                    //TODO разберись c id
+                    int id = 0;
+                    _service.ExportSchedule(writer, id);
                 }
             }
             catch (Exception ex)

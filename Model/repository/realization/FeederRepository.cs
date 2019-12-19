@@ -13,9 +13,13 @@ using Model.entities;
 
 namespace Model.repository.realization
 {
+    //TODO можно в общем то и работу с расписаниями тут добавить
+    //TODO скорее всего будут переезды, и ребята будут хранить только список id, так удобнее
+
     public class FeederRepository : IFeederRepository
     {
         private static List<Feeder> _data = new List<Feeder>();
+        private IScheduleRepository _scheduleRepository = new ScheduleRepository();
         private static int _end_index = 0;
         public int create(Feeder obj)
         {
@@ -28,6 +32,11 @@ namespace Model.repository.realization
         //TODO
         public void delete(int id)
         {
+            List<Schedule> schedules = GetSchedules(id).ToList();
+            foreach (Schedule schedule in schedules)
+            {
+                _scheduleRepository.delete(schedule.id);
+            }
             _data.RemoveAll(c => c.id == id);
         }
 
@@ -55,6 +64,7 @@ namespace Model.repository.realization
             var feeder = _data.Find(o => o.id == obj.id);
             if (feeder != null)
             {
+                //TODO проверки на пустоту
                 feeder.name = obj.name;
                 feeder.activeSchedule = obj.activeSchedule;
                 feeder.speed = obj.speed;

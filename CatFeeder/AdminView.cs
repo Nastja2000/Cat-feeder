@@ -8,6 +8,8 @@ namespace CatFeeder
     public partial class AdminView : Form, IAdminView
     {
         private readonly ApplicationContext _context;
+
+
         public AdminView(ApplicationContext context)
         {
             _context = context;

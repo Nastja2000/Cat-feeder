@@ -20,7 +20,10 @@ namespace Presentation
             _view.ShowOwner += ShowOwner;
             _view.addOwner += addOwner;
             _view.deleteOwner += deleteOwner;
+            //TODO решить эту проблему
+            //_service.OwnersUpdated += ShowOwners;
 
+            //TODO решить проблему с дополнительными окнами
             _view.GoBack += ShowImitationView;
 
             _service = service;
@@ -54,8 +57,10 @@ namespace Presentation
 
         private void ShowImitationView()
         {
+            //TODO решить проблему с дополнительными окнами
             _kernel.Get<ImitationPresenter>().Run();
             _view.Close();
+            
         }
 
         public void Run()

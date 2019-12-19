@@ -8,6 +8,7 @@ using Presentation;
 using Model.services;
 using Model.services.realization;
 
+//TODO логирование, состояние системы, основной функционал, вызов ивентов для обновления окон
 namespace CatFeeder
 {
     static class Program
@@ -24,7 +25,11 @@ namespace CatFeeder
             kernel.Bind<IImitationView>().To<ImitationView>();
             kernel.Bind<IFeederView>().To<FeederView>();
             kernel.Bind<IAdminView>().To<AdminView>();
-            
+            kernel.Bind<IAdminFeederView>().To<AdminFeederView>();
+            kernel.Bind<IAdminOwnerView>().To<AdminOwnerView>();
+            kernel.Bind<IOwnerView>().To<OwnerView>();
+            kernel.Bind<IScheduleView>().To<ScheduleView>();
+
             kernel.Bind<IAdminMainService>().To<AdminMainService>();
             kernel.Bind<IAdminOwnerService>().To<AdminOwnerService>();
             kernel.Bind<IFeederService>().To<FeederService>();

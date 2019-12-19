@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.repository
 {
-    public interface IRepository <T>
+    public interface IRepository <T> where T : class
     {
         int create(T obj);
         T read(int id);
