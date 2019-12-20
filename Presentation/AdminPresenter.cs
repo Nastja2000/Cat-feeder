@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Model;
+using Model.services;
 using Ninject;
 
 namespace Presentation
@@ -13,14 +14,19 @@ namespace Presentation
         public AdminPresenter(IAdminView view, IAdminMainService service, IKernel kernel)
         {
             _kernel = kernel;
-
+            _service = service;
             _view = view;
+
             _view.ShowOwner += ShowOwner;
             _view.addOwner += addOwner;
             _view.deleteOwner += deleteOwner;
+            //TODO решить эту проблему
+            _service.OwnersUpdated += ShowOwners;
+
+            //TODO решить проблему с дополнительными окнами
             _view.GoBack += ShowImitationView;
 
-            _service = service;
+            
         }
 
         private void deleteOwner(string name)
@@ -33,27 +39,34 @@ namespace Presentation
             _service.addOwner(name);
         }
 
-        private void ShowOwner()
+        private void ShowOwner(int id)
         {
-            _kernel.Get<AdminOwnerPresenter>().Run();
+            _kernel.Get<AdminOwnerPresenter>().Run(id);
             //presenter.ImitationUpdated += ShowInitiative;
-            _view.Show();
+           // _view.Show();
 
         }
+
 
         private void ShowOwners()
         {
+            //TODO разобраться с тем, передавать ли id
             _view.ShowOwners(_service.GetAllOwners());
         }
 
+
         private void ShowImitationView()
         {
+            //TODO решить проблему с дополнительными окнами
             _kernel.Get<ImitationPresenter>().Run();
             _view.Close();
+
+            
         }
 
         public void Run()
         {
+            ShowOwners();
             _view.Show();
         }
 

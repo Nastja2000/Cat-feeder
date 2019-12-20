@@ -8,6 +8,8 @@ namespace CatFeeder
     public partial class AdminView : Form, IAdminView
     {
         private readonly ApplicationContext _context;
+
+
         public AdminView(ApplicationContext context)
         {
             _context = context;
@@ -21,7 +23,7 @@ namespace CatFeeder
             base.Show();
         }
 
-        public event Action ShowOwner;
+        public event Action<int> ShowOwner;
       //public event Action ShowFeeder;
       public event Action GoBack;
       public event Action<string> addOwner;
@@ -36,6 +38,7 @@ namespace CatFeeder
         {
             addOwner?.Invoke(tb_Name.Text);
         }
+
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         { 
@@ -62,7 +65,13 @@ namespace CatFeeder
 
         private void ChooseBtn_Click(object sender, EventArgs e)
         {
-            ShowOwner?.Invoke();
+            //TODO сюда из под кнопки должен прилетать айдишник (или ещё как это решить)
+            ShowOwner?.Invoke(0);
+        }
+
+        private void LolBtn_Click(object sender, EventArgs e)
+        {
+            addOwner?.Invoke(tb_Name.Text);
         }
     }
 }

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Model;
+using Model.services;
 using Ninject;
 
 namespace Presentation
@@ -65,7 +66,7 @@ namespace Presentation
 
         private void ShowUser()
         {
-            _kernel.Get<OwnerPresenter>().Run();
+            _kernel.Get<ListOfOwnersPresenter>().Run();
             //presenter.ImitationUpdated += ShowInitiative;
             _view.Show();
         }
@@ -78,16 +79,16 @@ namespace Presentation
         }
 
 
-        private void Step()
+  /*      private void Step()
         {
             _imitationService.ImitationDurationUpdated();
-        }
+        }*/
 
         private void setStepSize()
         {
             if (int.TryParse(_view.StepSizeVal, out int stepSizeVal))
             {
-                _imitationService.setStepSize(stepSizeVal);
+                _imitationService.StepSize = stepSizeVal;
             }
             else
             {
@@ -112,7 +113,7 @@ namespace Presentation
         {
             if (int.TryParse(_view.EatingQuantVal, out int eatingQuantVal))
             {
-                _imitationService.setEatingQuan(eatingQuantVal);
+                _imitationService.EatingQuan = eatingQuantVal;
             }
             else
             {
@@ -124,7 +125,7 @@ namespace Presentation
         {
             if (int.TryParse(_view.EatingFreqVal, out int eatingFreqVal))
             {
-                _imitationService.setEatingFreq(eatingFreqVal);
+                _imitationService.EatingFreq = eatingFreqVal;
             }
             else
             {

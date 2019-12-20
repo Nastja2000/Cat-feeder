@@ -50,12 +50,14 @@
     <Compile Include="AdminFeederPresenter.cs" />
     <Compile Include="AdminOwnerPresenter.cs" />
     <Compile Include="AdminPresenter.cs" />
+    <Compile Include="ListOfOwnersPresenter.cs" />
     <Compile Include="FeederPresenter.cs" />
     <Compile Include="IAdminFeederView.cs" />
     <Compile Include="IAdminOwnerView.cs" />
     <Compile Include="IAdminView.cs" />
     <Compile Include="IFeederView.cs" />
     <Compile Include="IImitationView.cs" />
+    <Compile Include="IListOfOwnersViewcs.cs" />
     <Compile Include="ImitationPresenter.cs" />
     <Compile Include="IOwnerView.cs" />
     <Compile Include="IScheduleView.cs" />

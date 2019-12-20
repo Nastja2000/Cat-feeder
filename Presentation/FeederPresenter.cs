@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Model;
+using Model.services;
 using Ninject;
 
 namespace Presentation
@@ -9,8 +10,8 @@ namespace Presentation
     {
         private readonly IKernel _kernel;
         private IFeederView _view;
-        private IFeederService _service;
-        public FeederPresenter(IFeederView view, IFeederService service, IKernel kernel)
+        private IOwnerFeederService _service;
+        public FeederPresenter(IFeederView view, IOwnerFeederService service, IKernel kernel)
         {
             _kernel = kernel;
 
@@ -26,19 +27,21 @@ namespace Presentation
 
         private void ShowOwnerView()
         {
-            _kernel.Get<OwnerPresenter>().Run();
+            _kernel.Get<AdminPresenter>().Run();
             _view.Close();
         }
 
-        private void CreateSchedule(string name)
+        private void CreateSchedule(string id_plus_name)
         {
-            _service.CreateSchedule(/*name*/);
+            //TODO назвать нормально и распарсить
+            //вписать вниз соответсвенно
+            _service.CreateSchedule(0, "name");
         }
 
-        private void ShowSchs()
+      /*  private void ShowSchs()
         {
             _view.ShowSchs(_service.GetAllSchedules());
-        }
+        }*/
 
         private void ImportSchedule(string path)
         {
@@ -46,7 +49,9 @@ namespace Presentation
             {
                 using (StreamReader reader = File.OpenText(path))
                 {
-                    _service.ImportSchedule(reader);
+                    //TODO разберись c id
+                    int id = 0;
+                    _service.ImportSchedule(reader, id);
                 }
             }
             catch (Exception ex)
@@ -61,7 +66,9 @@ namespace Presentation
             {
                 using (StreamWriter writer = File.CreateText(path))
                 {
-                    _service.ExportSchedule(writer);
+                    //TODO разберись c id
+                    int id = 0;
+                    _service.ExportSchedule(writer, id);
                 }
             }
             catch (Exception ex)

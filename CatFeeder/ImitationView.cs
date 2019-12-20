@@ -45,6 +45,7 @@ namespace CatFeeder
         public event Action setStepSize;
 
 
+
         public string CountOfFood => tb_AddFood.Text;        
         public string StepSizeVal => tb_StepSize.Text;
         public int id => int.Parse(tb_name.Text);
@@ -124,14 +125,14 @@ namespace CatFeeder
 
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*UserForm newForm = new UserForm(this);
+            /*OwnerView newForm = new OwnerView(new ApplicationContext());
             newForm.Show();*/
             ShowUser?.Invoke();
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            /*AdminForm lodedAdmin = new AdminForm(this);
+            /*AdminView lodedAdmin = new AdminView();
             lodedAdmin.Show();*/
             ShowAdmin?.Invoke();
         }
@@ -174,6 +175,8 @@ namespace CatFeeder
         }
 
         
+
+
 
         /* private void StepButton_Click(object sender, EventArgs e)
          {

@@ -1,5 +1,6 @@
 ﻿using System;
 using Model;
+using Model.services;
 using Ninject;
 
 namespace Presentation
@@ -22,13 +23,14 @@ namespace Presentation
             _service = service;
         }
 
+
         /*
         private void DeleteFeeder(string name)
         {
             _service.DeleteFeeder(name);
-        }
+        }*/
 
-        private void AddFeeder(string name)
+      /*  private void AddFeeder(string name)
         {
             _service.AddFeeder(name);
         }*/
@@ -37,13 +39,13 @@ namespace Presentation
         {
             _kernel.Get<FeederPresenter>().Run();
             //presenter.ImitationUpdated += ShowInitiative;
-            _view.Show();
+          //  _view.Show();
 
         }
 
-        private void ShowFeeders()
+        private void ShowFeeders(int id)
         {
-            _view.ShowFeeders(_service.GetAllFeeders());
+            _view.ShowFeeders(_service.GetAllFeeders(id));
         }
 
         private void ShowImitationView()
@@ -53,9 +55,9 @@ namespace Presentation
         }
 
         
-        public void Run()
+        public void Run(int id)
         {
-           // ShowFeeders();
+           ShowFeeders(id);
             _view.Show();
         }        
     }

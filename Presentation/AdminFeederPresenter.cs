@@ -1,6 +1,7 @@
 ﻿using System;
 using System.IO;
 using Model;
+using Model.services;
 using Ninject;
 
 namespace Presentation
@@ -9,14 +10,14 @@ namespace Presentation
     {
         private readonly IKernel _kernel;
         private IAdminFeederView _view;
-        private IAdminFeederService _service;
-        public AdminFeederPresenter(IAdminFeederView view, IAdminFeederService service, IKernel kernel)
+        private IFeederService _service;
+        public AdminFeederPresenter(IAdminFeederView view, IFeederService service, IKernel kernel)
         {
             _kernel = kernel;
 
             _view = view;
-            _view.ShowSch += ShowSch;
-            //_view.AddSch += AddSch;
+
+            //_view.ShowSch += ShowSch;
             //_view.DeleteSch += DeleteSch;
             _view.ImportSchedule += ImportSchedule;
             _view.ExportSchedule += ExportSchedule;
@@ -34,17 +35,11 @@ namespace Presentation
         /*private void DeleteSch(string name)
         {
             _service.DeleteSch(name);
-        }
-
-        private void AddSch(string name)
-        {
-            _service.AddSch(name);
         }*/
-
-        private void ShowSchs()
+        /*  private void ShowSchs()
         {
             _view.ShowSchs(_service.GetAllSchedules());
-        }
+        }*/
 
         private void ImportSchedule(string path)
         {
@@ -52,12 +47,14 @@ namespace Presentation
             {
                 using (StreamReader reader = File.OpenText(path))
                 {
-                    _service.ImportSchedule(reader);
+                    //TODO разберись c id
+                    int id = 0;
+                    _service.ImportSchedule(reader, id);
                 }
             }
             catch (Exception ex)
             {
-                _view.ShowError(ex.Message);
+                //_view.ShowError(ex.Message);
             }
         }
 
@@ -67,22 +64,24 @@ namespace Presentation
             {
                 using (StreamWriter writer = File.CreateText(path))
                 {
-                    _service.ExportSchedule(writer);
+                    //TODO разберись c id
+                    int id = 0;
+                    _service.ExportSchedule(writer, id);
                 }
             }
             catch (Exception ex)
             {
-                _view.ShowError(ex.Message);
+                //_view.ShowError(ex.Message);
             }
         }
 
-        private void ShowSch()
+    /*    private void ShowSch()
         {
             _kernel.Get<SchedulePresenter>().Run();
             //presenter.ImitationUpdated += ShowInitiative;
             _view.Show();
 
-        }
+        }*/
 
         public void Run()
         {

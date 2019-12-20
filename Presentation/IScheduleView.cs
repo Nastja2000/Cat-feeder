@@ -12,7 +12,9 @@ namespace Presentation
 
         event Action GoBack;
         event Action<string> Save;
-        //event Action<bool> AddMark;
+
+        //TODO ???? Mark это строка, идёт отдельным набором полей в сэйве
+       // event Action<string> AddMark;
 
         void ShowError(string message);
     }

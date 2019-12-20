@@ -33,15 +33,6 @@ namespace CatFeeder
         public event Action<string> addFeeder;
         public event Action<string> deleteFeeder;
 
-        private void GoBackBtn_Click(object sender, EventArgs e)
-        {
-            GoBack?.Invoke();
-        }
-
-        private void AddBtn_Click(object sender, EventArgs e)
-        {
-            addFeeder?.Invoke(tb_Name.Text);
-        }
 
         private void DeleteBtn_Click(object sender, EventArgs e)
         {
@@ -66,9 +57,22 @@ namespace CatFeeder
             lbl_Error.Text = message;
         }
 
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            addFeeder?.Invoke(tb_Name.Text);
+        }
+
         private void ChooseBtn_Click(object sender, EventArgs e)
         {
             ShowFeeder?.Invoke();
         }
+
+        private void GoBackBtn_Click(object sender, EventArgs e)
+        {
+            GoBack?.Invoke();
+        }
+
+       
     }
 }

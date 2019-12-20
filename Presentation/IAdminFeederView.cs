@@ -10,10 +10,11 @@ namespace Presentation
         event Action<string> ImportSchedule;
         event Action<string> ExportSchedule;
         //event Action<string> AddSch;
-       // event Action<string> DeleteSch;
+        //event Action<string> DeleteSch;
         event Action GoBack;
 
         void ShowSchs(IEnumerable<string> characters);
-        void ShowError(string message);
+
+    //    void ShowError(string message);
     }
 }
