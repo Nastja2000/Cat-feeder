@@ -54,7 +54,7 @@ namespace Presentation
             }
             catch (Exception ex)
             {
-                _view.ShowError(ex.Message);
+                //_view.ShowError(ex.Message);
             }
         }
 
@@ -71,7 +71,7 @@ namespace Presentation
             }
             catch (Exception ex)
             {
-                _view.ShowError(ex.Message);
+                //_view.ShowError(ex.Message);
             }
         }
 
