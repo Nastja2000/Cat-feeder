@@ -11,13 +11,18 @@ namespace Model.entities
     {
         public int tankCapacity { get; set; }
         public int tankFood { get; set; }
-        /*TODO: plateFood*/
+
         public Schedule activeSchedule { get; set; }
 
         public IEnumerable<Schedule> schedules = new List<Schedule>();
         public int cats { get; set; }
         public int speed { get; set; }
+        public int leftToAdd { get; set; }
 
+        public enum Types {
+            motor, press
+        }
 
+        public Types type { get; set; }
     }
 }

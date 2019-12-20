@@ -7,6 +7,9 @@ using Ninject;
 using Presentation;
 using Model.services;
 using Model.services.realization;
+using Model.entities;
+using Model.repository;
+using Model.repository.realization;
 
 //TODO логирование, состояние системы, основной функционал, вызов ивентов для обновления окон
 namespace CatFeeder
@@ -21,6 +24,8 @@ namespace CatFeeder
         {
             Ninject.StandardKernel kernel = new StandardKernel();
             kernel.Bind<ApplicationContext>().ToConstant(new ApplicationContext());
+            kernel.Bind<ITimer>().To<WinFormTimer>();
+
             kernel.Bind<IOwnerView>().To<OwnerView>();
             kernel.Bind<IImitationView>().To<ImitationView>();
             kernel.Bind<IFeederView>().To<FeederView>();
@@ -37,6 +42,8 @@ namespace CatFeeder
             kernel.Bind<IOwnerFeederService>().To<OwnerFeederService>();
             kernel.Bind<IOwnerService>().To<OwnerService>();
             kernel.Bind<IScheduleService>().To<ScheduleService>();
+
+            kernel.Bind<IFeederRepository>().To<FeederRepository>();
             
 
 
@@ -46,5 +53,7 @@ namespace CatFeeder
             kernel.Get<ImitationPresenter>().Run();
             Application.Run(kernel.Get<ApplicationContext>());
         }
+
+        internal class WinFormTimer : System.Windows.Forms.Timer, ITimer { }
     }
 }

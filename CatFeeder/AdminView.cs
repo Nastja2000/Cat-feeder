@@ -68,10 +68,5 @@ namespace CatFeeder
             //TODO сюда из под кнопки должен прилетать айдишник (или ещё как это решить)
             ShowOwner?.Invoke(0);
         }
-
-        private void LolBtn_Click(object sender, EventArgs e)
-        {
-            addOwner?.Invoke(tb_Name.Text);
-        }
     }
 }

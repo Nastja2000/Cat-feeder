@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Model;
+using Model.entities;
 using Model.services;
 using Ninject;
 
@@ -30,16 +32,28 @@ namespace Presentation
             _view.setEatingQuan += setEatingQuan;
             _view.setStepSize += setStepSize;
 
-
             _imitationService = imitationService;
+            _imitationService.ImitationDurationUpdated += ImitationDurationUpdated;
+            _imitationService.FeedersUpdated += ShowFeeders;
            // _imitationService.TurnFinished += TurnFinished;
-            
+
 
         }
         /*private void TurnFinished()
         {
             _view.ShowFeederStatus(_imitationService.CountOfFood);
         }*/
+
+        private void ShowFeeders()
+        {
+            //TODO сделать более изящно?
+            List<string> names = new List<string>();
+            foreach(Feeder feeder in _imitationService.GetAllFeeders())
+            {
+                names.Add(feeder.name);
+            }
+            _view.ShowFood(names);
+        }
 
         private void ImitationDurationUpdated()
         {
@@ -73,8 +87,9 @@ namespace Presentation
 
         private void ShowAdmin()
         {
-            _kernel.Get<AdminPresenter>().Run();
-            //presenter.ImitationUpdated += ShowInitiative;
+            var presenter = _kernel.Get<AdminPresenter>();
+            presenter.FeedersUpdated += ShowFeeders;
+            presenter.Run();
            // _view.Show();
         }
 
@@ -135,6 +150,7 @@ namespace Presentation
 
         public void Run()
         {
+            ShowFeeders();
             _view.Show();
         }
 

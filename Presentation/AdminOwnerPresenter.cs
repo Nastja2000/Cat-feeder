@@ -10,6 +10,8 @@ namespace Presentation
         private readonly IKernel _kernel;
         private IAdminOwnerView _view;
         private IAdminOwnerService _service;
+
+        public event Action FeederUpdated;
         public AdminOwnerPresenter(IAdminOwnerView view, IAdminOwnerService service, IKernel kernel)
         {
             _kernel = kernel;
@@ -37,6 +39,7 @@ namespace Presentation
         {
             //TODO принимаем чья и как зовут
             _service.addFeeder(0, name);
+            FeederUpdated?.Invoke();
         }
 
         private void ShowFeeder()

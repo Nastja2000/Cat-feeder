@@ -26,6 +26,7 @@ namespace Presentation
         event Action setEatingFreq;
         event Action setStepSize;
 
+        void ShowFood(IEnumerable<string> food);
         void ShowFeederStatus(int countOfFood);
         void ShowTime(TimeSpan imit_duration);
         void ImitationStarted();

@@ -11,6 +11,8 @@ namespace Presentation
         private readonly IKernel _kernel;
         private IAdminView _view;
         private IAdminMainService _service;
+        public event Action FeedersUpdated;
+
         public AdminPresenter(IAdminView view, IAdminMainService service, IKernel kernel)
         {
             _kernel = kernel;
@@ -41,12 +43,18 @@ namespace Presentation
 
         private void ShowOwner(int id)
         {
-            _kernel.Get<AdminOwnerPresenter>().Run(id);
+            var presenter = _kernel.Get<AdminOwnerPresenter>();
+            presenter.FeederUpdated += ConfirmUpdate; 
+            presenter.Run(id);
             //presenter.ImitationUpdated += ShowInitiative;
-           // _view.Show();
+            // _view.Show();
 
         }
 
+        private void ConfirmUpdate()
+        {
+            FeedersUpdated?.Invoke();
+        }
 
         private void ShowOwners()
         {

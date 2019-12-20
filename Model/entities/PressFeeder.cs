@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace Model.entities
 {
-    public class AmountFeeder : Feeder
+    public class PressFeeder : Feeder
     {
-        public int leftToAdd{ get; set; }
+        public Random rand = new Random();
+
+        public int NowSpeed { get; set; }
     }
 }

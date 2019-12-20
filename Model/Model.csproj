@@ -43,9 +43,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="entities\AmountFeeder.cs" />
+    <Compile Include="entities\MotoFeeder.cs" />
+    <Compile Include="entities\PressFeeder.cs" />
     <Compile Include="entities\EntityBase.cs" />
     <Compile Include="entities\Feeder.cs" />
+    <Compile Include="entities\ITimer.cs" />
     <Compile Include="entities\Owner.cs" />
     <Compile Include="entities\Schedule.cs" />
     <Compile Include="services\IFeederService.cs" />
