@@ -25,9 +25,9 @@ namespace Model.services.realization
         {
             _feederRepository = repository;
             _timer = timer;
-            _timer.Interval = 110;
+            _timer.Interval = 5000;
             _timer.Tick += TimerTick;
-
+            StepSize = 1;
             
 
          //   _round_durations = new List<TimeSpan>();
@@ -69,7 +69,7 @@ namespace Model.services.realization
             int minutes = StepSize * 20 % 60;
             int hours = StepSize * 20 / 60;
             TimeSpan ts = new TimeSpan(hours, minutes, 0);
-            ImitationDuration.Add(ts);
+            ImitationDuration = ImitationDuration.Add(ts);
             foreach (Feeder feeder in _feederRepository.readAll())
             {
                 if (CheckStatus(feeder)) f = true;

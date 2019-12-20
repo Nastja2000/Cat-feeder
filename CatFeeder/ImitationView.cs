@@ -89,11 +89,12 @@ namespace CatFeeder
             StartImitButton.Text = @"Start";
             StopImitButton.Text = @"Stop";
 
-            StartImitButton.Enabled = true;
-            tb_AddFood.Enabled = true;
-            tb_Cat_Eating_Frequency.Enabled = true;
-            tb_QuantityDispersion.Enabled = true;
-            tb_QuantityPerCatEating.Enabled = true;
+            StartImitButton.Enabled = false;
+            StopImitButton.Enabled = true;
+            tb_AddFood.Enabled = false;
+            tb_Cat_Eating_Frequency.Enabled = false;
+            tb_QuantityDispersion.Enabled = false;
+            tb_QuantityPerCatEating.Enabled = false;
         }
 
         private void ResetView()
@@ -108,6 +109,7 @@ namespace CatFeeder
             StartImitButton.Text = @"Start";
             StopImitButton.Text = @"Stop";
 
+            StartImitButton.Enabled = true;
             StopImitButton.Enabled = false;
             tb_AddFood.Enabled = true;
             tb_Cat_Eating_Frequency.Enabled = true;
@@ -118,6 +120,7 @@ namespace CatFeeder
 
         public void ImitationStopped()
         {
+            //TODO переделать что бы запоминать позицию, а не просто её сбрасывать и отдельно сделать reset
             ResetView();
         }
 
