@@ -23,7 +23,7 @@ namespace CatFeeder
         public new void Show()
         {
             _context.MainForm = this;
-            ShowError(string.Empty);
+        //    ShowError(string.Empty);
             base.Show();
             
         }

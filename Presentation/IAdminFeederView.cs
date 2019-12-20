@@ -14,6 +14,7 @@ namespace Presentation
         event Action GoBack;
 
         void ShowSchs(IEnumerable<string> characters);
-        void ShowError(string message);
+
+    //    void ShowError(string message);
     }
 }
