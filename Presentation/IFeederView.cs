@@ -6,7 +6,8 @@ namespace Presentation
 {
    public interface IFeederView : IView
     {
-        event Action<string> ShowSch;
+        event Action<string, string, string> ShowSch;
+        event Action<string, string> SetActive;
         event Action<string, string> ImportSchedule;
         event Action<string, string> ExportSchedule;
         event Action<string, string> CreateSchedule;

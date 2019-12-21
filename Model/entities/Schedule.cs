@@ -33,6 +33,7 @@ namespace Model.entities
         // public int IEnumarable<DateTimeOffset> timeList = new List<DateTimeOffset>();
         public IEnumerable<string> marks = new List<string>();
 
+        public int round { get; set; } = 0;
         /*TODO: как реализовать get set для этого листа */
     }
 }

@@ -29,13 +29,15 @@ namespace CatFeeder
         }
 
         public event Action<string> ShowSch;
+        public event Action<string, IEnumerable<string>> Save;
         public event Action<string> GoBack;
 // public event Action<string> AddSch;
         public event Action<string, string> ImportSchedule;
         public event Action<string, string> ExportSchedule;
        // public event Action<string> DeleteSch;
 
-            public string ownerName { get; set; }
+        public string ownerName { get; set; }
+        public string feederName { get; set; }
 
         private void GoBackBtn_Click(object sender, EventArgs e)
         {
@@ -76,7 +78,7 @@ namespace CatFeeder
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ExportSchedule?.Invoke(saveFileDialog.FileName, ownerName);
+                ExportSchedule?.Invoke(saveFileDialog.FileName, feederName);
             }
         }
 
@@ -91,8 +93,18 @@ namespace CatFeeder
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ImportSchedule?.Invoke(openFileDialog.FileName, ownerName);
+                ImportSchedule?.Invoke(openFileDialog.FileName, feederName);
             }
+        }
+
+        private void SaveBtn_Click(object sender, EventArgs e)
+        {
+            List<string> fields = new List<string>();
+            fields.Add(feederName);
+            fields.Add(tb_TankCap.Text);
+            fields.Add(tb_cats.Text);
+            fields.Add(tb_speed.Text);
+            Save?.Invoke(ownerName, fields);
         }
     }
 }

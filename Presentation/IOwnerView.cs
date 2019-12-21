@@ -9,10 +9,12 @@ namespace Presentation
 {
     public interface IOwnerView : IView
     {
-        event Action ShowFeeder;
+        event Action<string, string> ShowFeeder;
         event Action GoBack;
         event Action<string> AddFeeder;
         event Action<string> DeleteFeeder;
+
+        string ownerName { get; set; }
 
         void ShowFeeders(IEnumerable<string> feeders);
         //void ChooseFeeder();

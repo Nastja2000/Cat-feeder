@@ -27,9 +27,13 @@ namespace CatFeeder
             base.Show();
         }
 
-        public event Action GoBack;
-        public event Action<string> Save;
-      //  public event Action<bool> AddMark;
+        public event Action<string, string> GoBack;
+        public event Action<IEnumerable<string>> Save;
+
+        public string ownerName { get; set; }
+        public string feederName { get; set; }
+        public string scheduleName { get; set; }
+        //  public event Action<bool> AddMark;
 
         public string TurnDurationLimit
         {
@@ -37,9 +41,15 @@ namespace CatFeeder
             set => tb_TurnDurationLimit.Text = value;
         }
 
+        public string TurnFoodAmount
+        {
+            get => tb_amount.Text;
+            set => tb_amount.Text = value;
+        }
+
         private void GoBackBtn_Click(object sender, EventArgs e)
         {
-            GoBack?.Invoke();
+            GoBack?.Invoke(ownerName,feederName);
         }
 
         /*private void AddBtn_Click(object sender, EventArgs e)
@@ -55,7 +65,12 @@ namespace CatFeeder
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            Save?.Invoke(TurnDurationLimit);
+            //TODO проверка на пустоту
+            List<string> fields = new List<string>();
+            fields.Add(scheduleName);
+            fields.Add(TurnFoodAmount);
+            fields.Add(TurnDurationLimit);
+            Save?.Invoke(fields);
         }
     }
 }

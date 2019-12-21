@@ -37,9 +37,9 @@ namespace Presentation
             _service.AddFeeder(name);
         }*/
 
-        private void ShowFeeder()
+        private void ShowFeeder(string ownerName, string feederName)
         {
-            _kernel.Get<FeederPresenter>().Run();
+            _kernel.Get<FeederPresenter>().Run(ownerName, feederName);
             //presenter.ImitationUpdated += ShowInitiative;
           //  _view.Show();
 

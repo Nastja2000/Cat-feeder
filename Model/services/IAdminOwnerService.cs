@@ -14,7 +14,7 @@ namespace Model.services
 
         IEnumerable<string> GetAllFeeders(string name);
 
-        void addFeeder(string nameOwn, string nameFeed);
+        void addFeeder(string nameOwn, string name);
         void deleteFeeder(string ownerName, string nameFeed);
         //+log(owner: Owner)
 

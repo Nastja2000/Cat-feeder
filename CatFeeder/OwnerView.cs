@@ -15,6 +15,8 @@ namespace CatFeeder
     {
         private readonly ApplicationContext _context;
 
+
+
         public OwnerView(ApplicationContext context)
         {
             _context = context;
@@ -28,10 +30,11 @@ namespace CatFeeder
             base.Show();
         }
 
-        public event Action ShowFeeder;
+        public event Action<string, string> ShowFeeder;
         public event Action GoBack;
         public event Action<string> AddFeeder;
         public event Action<string> DeleteFeeder;
+        public string ownerName { get; set; }
 
         private void GoBackBtn_Click(object sender, EventArgs e)
         {
@@ -68,7 +71,15 @@ namespace CatFeeder
 
         private void ChooseBtn_Click(object sender, EventArgs e)
         {
-            ShowFeeder?.Invoke();
+            if (lv_users.SelectedItems.Count > 0)
+            {
+                ShowFeeder?.Invoke(ownerName, lv_users.SelectedItems[0].Text);
+            }
+            else
+            {
+                ShowError("U should choose from list before clicking button");
+            }
+
         }
     }
 }

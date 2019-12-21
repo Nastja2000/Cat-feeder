@@ -11,9 +11,12 @@ namespace Model.services
 
     public interface IFeederService
     {
-        event Action FeederUpdated;
+        event Action<string> FeederUpdated;
 
         IEnumerable<Schedule> GetAllSchedules(string name);
+
+        void SaveFeeder(string ownerName, IEnumerable<string> fields);
+
         //findSchedules(???)
         void ImportSchedule(StreamReader reader, string name);
         void ExportSchedule(StreamWriter writer, string name);

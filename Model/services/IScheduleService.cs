@@ -9,7 +9,7 @@ namespace Model.services
 {
     public interface IScheduleService
     {
-        event Action ScheduleByOwnerUpdate;
+        event Action<string> ScheduleUpdated;
 
         Schedule GetSchedule(string name);
      

@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Model;
+using Model.entities;
 using Model.services;
 using Ninject;
 
@@ -21,8 +23,10 @@ namespace Presentation
             _view.ImportSchedule += ImportSchedule;
             _view.ExportSchedule += ExportSchedule;
             _view.GoBack += ShowOwnerView;
+            _view.SetActive += SetActive;
 
             _service = service;
+            _service.FeederUpdated += ShowSchs;
         }
 
         private void ShowOwnerView(string name)
@@ -39,10 +43,16 @@ namespace Presentation
             _service.CreateSchedule(feederName, name);
         }
 
-      /*  private void ShowSchs()
+        private void ShowSchs(string feederName)
         {
-            _view.ShowSchs(_service.GetAllSchedules());
-        }*/
+            List<string> names = new List<string>();
+            foreach (Schedule schedule in _service.GetAllSchedules(feederName))
+            {
+                names.Add(schedule.name);
+            }
+            ;
+            _view.ShowSchs(names);
+        }
 
         private void ImportSchedule(string path, string feederName)
         {
@@ -78,17 +88,27 @@ namespace Presentation
             }
         }
 
-        private void ShowSch(string name)
+        private void ShowSch(string ownerName, string feederName, string scheduleName)
         {
-            _kernel.Get<SchedulePresenter>().Run();
+            _kernel.Get<SchedulePresenter>().Run(ownerName, feederName, scheduleName);
             //presenter.ImitationUpdated += ShowInitiative;
             _view.Show();
 
-        }       
+        }
 
-        public void Run()
+        private void SetActive(string feederName, string scheduleName)
         {
-            //ShowSchs();
+            _service.chooseSchedule(feederName, scheduleName);
+            //presenter.ImitationUpdated += ShowInitiative;
+            _view.Show();
+
+        }
+
+        public void Run(string ownerName, string feederName)
+        {
+            _view.ownerName = ownerName;
+            _view.feederName = feederName;
+            ShowSchs(feederName);
             _view.Show();
         }
 

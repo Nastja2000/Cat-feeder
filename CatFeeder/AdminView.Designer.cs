@@ -77,12 +77,11 @@
             this.lv_users.Size = new System.Drawing.Size(205, 227);
             this.lv_users.TabIndex = 8;
             this.lv_users.UseCompatibleStateImageBehavior = false;
-            //this.lv_users.SelectedIndexChanged += new System.EventHandler(this.lv_users_SelectedIndexChanged);
             // 
             // DeleteBtn
             // 
             this.DeleteBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteBtn.Location = new System.Drawing.Point(627, 221);
+            this.DeleteBtn.Location = new System.Drawing.Point(629, 275);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(102, 37);
             this.DeleteBtn.TabIndex = 9;
@@ -103,7 +102,7 @@
             this.lbl_Error.AutoSize = true;
             this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Error.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error.Location = new System.Drawing.Point(443, 158);
+            this.lbl_Error.Location = new System.Drawing.Point(569, 218);
             this.lbl_Error.Name = "lbl_Error";
             this.lbl_Error.Size = new System.Drawing.Size(47, 20);
             this.lbl_Error.TabIndex = 11;
@@ -112,7 +111,7 @@
             // ChooseBtn
             // 
             this.ChooseBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChooseBtn.Location = new System.Drawing.Point(473, 221);
+            this.ChooseBtn.Location = new System.Drawing.Point(473, 275);
             this.ChooseBtn.Name = "ChooseBtn";
             this.ChooseBtn.Size = new System.Drawing.Size(102, 37);
             this.ChooseBtn.TabIndex = 12;

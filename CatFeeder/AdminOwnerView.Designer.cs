@@ -52,7 +52,7 @@
             // ChooseBtn
             // 
             this.ChooseBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChooseBtn.Location = new System.Drawing.Point(473, 268);
+            this.ChooseBtn.Location = new System.Drawing.Point(472, 304);
             this.ChooseBtn.Name = "ChooseBtn";
             this.ChooseBtn.Size = new System.Drawing.Size(102, 37);
             this.ChooseBtn.TabIndex = 25;
@@ -65,7 +65,7 @@
             this.lbl_Error.AutoSize = true;
             this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Error.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error.Location = new System.Drawing.Point(443, 205);
+            this.lbl_Error.Location = new System.Drawing.Point(575, 256);
             this.lbl_Error.Name = "lbl_Error";
             this.lbl_Error.Size = new System.Drawing.Size(47, 20);
             this.lbl_Error.TabIndex = 24;
@@ -112,7 +112,7 @@
             // button2
             // 
             this.button2.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button2.Location = new System.Drawing.Point(635, 268);
+            this.button2.Location = new System.Drawing.Point(637, 304);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(102, 37);
             this.button2.TabIndex = 28;

@@ -27,24 +27,16 @@ namespace CatFeeder
             base.Show();
         }
 
-        public event Action<string> ShowSch;
+        public event Action<string, string, string> ShowSch;
         public event Action<string> GoBack;
         public event Action<string,string> CreateSchedule;
         public event Action<string, string> ImportSchedule;
         public event Action<string, string> ExportSchedule;
+        public event Action<string, string> SetActive;
 
         public string feederName { get; set; }
         public string ownerName { get; set; }
 
-        private void GoBackBtn_Click(object sender, EventArgs e)
-        {
-            GoBack?.Invoke(ownerName);
-        }
-
-        private void AddBtn_Click(object sender, EventArgs e)
-        {
-            CreateSchedule?.Invoke(feederName, tb_Name.Text);
-        }
 
         public void ShowSchs(IEnumerable<string> users)
         {
@@ -62,7 +54,7 @@ namespace CatFeeder
 
         private void btn_Import_Click(object sender, EventArgs e)
         {
-            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            if (openFileDialog.ShowDialog() == DialogResult.OK) 
             {
                 ImportSchedule?.Invoke(openFileDialog.FileName, feederName);
             }
@@ -78,9 +70,9 @@ namespace CatFeeder
         
         private void ChooseBtn_Click_1(object sender, EventArgs e)
         {
-            if (txt.Length > 0)
+            if (scheduleName.Length > 0)
             {
-                ShowSch?.Invoke(txt);
+                ShowSch?.Invoke(ownerName, feederName, scheduleName);
             } else
             {
                 ShowError("U should choose from list before clicking button");
@@ -88,13 +80,35 @@ namespace CatFeeder
            
         }
 
-        private string txt = "";
+        private string scheduleName = "";
         private void lv_users_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lv_users.SelectedItems.Count > 0)
             {
-               txt = lv_users.SelectedItems[0].Text;
+               scheduleName = lv_users.SelectedItems[0].Text;
             }
+        }
+
+        private void setActive_Click(object sender, EventArgs e)
+        {
+            if (scheduleName.Length > 0)
+            {
+                SetActive?.Invoke(feederName,scheduleName);
+            }
+            else
+            {
+                ShowError("U should choose from list before clicking button");
+            }
+        }
+
+        private void AddBtn_Click(object sender, EventArgs e)
+        {
+            CreateSchedule?.Invoke(feederName, tb_Name.Text);
+        }
+
+        private void GoBackBtn_Click_1(object sender, EventArgs e)
+        {
+            GoBack?.Invoke(ownerName);
         }
     }
 }

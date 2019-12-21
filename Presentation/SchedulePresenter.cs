@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.IO;
 using Model;
+using Model.entities;
 using Model.services;
 using Ninject;
 
@@ -21,34 +22,43 @@ namespace Presentation
             _view = view;
 
             _view.Save += Save;
-         //   _view.AddMark += AddMark;
+            //   _view.AddMark += AddMark;
             _view.GoBack += ShowImitationView;
 
             _service = service;
         }
 
-        private void ShowImitationView()
+        private void ShowImitationView(string ownerName, string feederName)
         {
-            _kernel.Get<FeederPresenter>().Run();
+            _kernel.Get<FeederPresenter>().Run(ownerName, feederName);
             _view.Close();
         }
 
-   /*     private void AddMark(string flag)
-        {
-            _service.AddMark(flag);
-        }*/
+        /*     private void AddMark(string flag)
+             {
+                 _service.AddMark(flag);
+             }*/
 
 
-        private void Save( string name)
+        private void Save(IEnumerable<string> fields)
         {
-            //TODO
-            IEnumerable<string> fields = null;
             _service.Save(fields);
         }
 
-        public void Run()
+        private void ShowStats(string name)
+        {
+            Schedule schedule = _service.GetSchedule(name);
+            _view.TurnDurationLimit = schedule.interval.ToString();
+            _view.TurnFoodAmount = schedule.amountOfFood.ToString();
+        }
+
+        public void Run(string ownerName, string feederName, string scheduleName)
         {
             //ShowSchs();
+            _view.scheduleName = scheduleName;
+            _view.feederName = feederName;
+            _view.ownerName = ownerName;
+            ShowStats(scheduleName);
             _view.Show();
         }
 

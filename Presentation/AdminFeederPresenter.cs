@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using Model;
 using Model.services;
@@ -22,14 +23,22 @@ namespace Presentation
             _view.ImportSchedule += ImportSchedule;
             _view.ExportSchedule += ExportSchedule;
             _view.GoBack += ShowOwnerView;
+            _view.Save += saveFeeder;
 
             _service = service;
+            
         }
 
         private void ShowOwnerView(string name)
         {
             _kernel.Get<AdminOwnerPresenter>().Run(name);
             _view.Close();
+        }
+        private void saveFeeder(string ownerName, IEnumerable<string> fields)
+        {
+
+            _service.SaveFeeder(ownerName, fields);
+          //  FeederUpdated?.Invoke();
         }
 
         /*private void DeleteSch(string name)
@@ -83,9 +92,11 @@ namespace Presentation
 
         }*/
 
-        public void Run()
+        public void Run(string ownerName, string federName)
         {
-            //ShowSchs();
+            _view.feederName = federName;
+            _view.ownerName = ownerName;
+            //ShowFeed();
             _view.Show();
         }
 

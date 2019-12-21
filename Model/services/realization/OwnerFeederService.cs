@@ -17,7 +17,7 @@ namespace Model.services.realization
         private IFeederRepository _feederRepository = new FeederRepository();
         private IScheduleRepository _scheduleRepository = new ScheduleRepository();
         public event Action FeederByOwnerUpdated;
-        public event Action FeederUpdated;
+        public event Action<string> FeederUpdated;
 
         public void changeName(int id, string name)
         {
@@ -36,7 +36,7 @@ namespace Model.services.realization
             if (newActive != null)
             {
                 feeder.activeSchedule = newActive;
-                FeederUpdated?.Invoke();
+                FeederUpdated?.Invoke(feederName);
             }
         }
 
@@ -46,13 +46,15 @@ namespace Model.services.realization
             marksList.Add(name);
             Schedule schedule = new Schedule(marksList);
             schedule.name = name;
+            schedule.interval = TimeSpan.Zero;
+            schedule.amountOfFood = 0;
             _scheduleRepository.create(schedule);
             Feeder feeder = _feederRepository.readByName(feederName);
             List<Schedule> l = feeder.schedules.ToList();
             l.Add(schedule);
             feeder.schedules = l;
             _feederRepository.update(feeder);
-            FeederUpdated?.Invoke();
+            FeederUpdated?.Invoke(feederName);
         }
 
 
@@ -75,7 +77,7 @@ namespace Model.services.realization
                     _feederRepository.update(feeder);
                     Schedule schedule = _scheduleRepository.readByName(scheduleName);
                     _scheduleRepository.delete(schedule.id);
-                    FeederUpdated?.Invoke();
+                    FeederUpdated?.Invoke(feederName);
                 }
             }
             catch (InvalidOperationException e)
@@ -112,8 +114,13 @@ namespace Model.services.realization
                 }
                 feeder.schedules = schedules;
                 _feederRepository.update(feeder);
-                FeederUpdated?.Invoke();
+                FeederUpdated?.Invoke(name);
             }
+        }
+
+        public void SaveFeeder(string ownerName, IEnumerable<string> fields)
+        {
+            throw new NotImplementedException();
         }
     }
 }

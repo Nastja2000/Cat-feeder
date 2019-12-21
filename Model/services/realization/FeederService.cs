@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Model.entities;
 using Model.repository;
 using Model.repository.realization;
@@ -10,12 +11,13 @@ namespace Model.services.realization
 {
     public class FeederService : IFeederService
     {
+        private IOwnerRepository _ownerRepository = new OwnerRepository();
         private IFeederRepository _feederRepository = new FeederRepository();
         private IScheduleRepository _scheduleRepository = new ScheduleRepository();
 
         private readonly JsonSerializer _serializer = new JsonSerializer();
         //private IOwnerRepository _ownerRepository = new OwnerRepository();
-        public event Action FeederUpdated;
+        public event Action<string> FeederUpdated;
 
         //todo зато тут работает
         public void ExportSchedule(StreamWriter writer, string id)
@@ -28,6 +30,29 @@ namespace Model.services.realization
             Feeder feeder = _feederRepository.readByName(id);
             return _feederRepository.GetSchedules(feeder.id);
         }
+
+        public void SaveFeeder(string ownerName, IEnumerable<string> info)
+        {
+            IEnumerator<string> enumerator = info.GetEnumerator();
+            enumerator.MoveNext();
+            Feeder feeder = _feederRepository.readByName(enumerator.Current);
+            Owner owner = _ownerRepository.readByName(ownerName);
+            if (feeder == null)
+            {
+                feeder = FeederFactory.factoryMethod(info);
+                _feederRepository.create(feeder);
+                List<Feeder> l = owner.feeders.ToList();
+                l.Add(feeder);
+                owner.feeders = l;
+                _ownerRepository.update(owner);
+            }
+            else
+            {
+                feeder = FeederFactory.factoryMethod(info);
+            }
+        }
+
+
 
         //TODO пока не работает
         public void ImportSchedule(StreamReader reader, string id)
@@ -48,8 +73,9 @@ namespace Model.services.realization
                 feeder.schedules = schedules;
                 _feederRepository.update(feeder);
                 feeder.log.Add("Sch imported in feeder №" + id + "by Admin");
-                FeederUpdated?.Invoke();
-            } else
+                FeederUpdated?.Invoke(id);
+            }
+            else
             {
                 //TODO обработать
             }

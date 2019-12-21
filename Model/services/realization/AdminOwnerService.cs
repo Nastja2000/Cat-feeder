@@ -20,6 +20,7 @@ namespace Model.services.realization
         {
             Feeder feeder = new Feeder();
             feeder.name = name;
+            feeder.schedules = new List<Schedule>();
             _feederRepository.create(feeder);
             Owner owner = _ownerRepository.readByName(ownerName);
             List<Feeder> l = owner.feeders.ToList();

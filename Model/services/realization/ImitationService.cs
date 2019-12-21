@@ -24,6 +24,8 @@ namespace Model.services.realization
         public int EatingQuan { get; set; } = 0;
 
         public int foodStat { get; set; } = 0;
+        public int UserStat { get; set; } = 0;
+        public int FeedersStat { get; set; } = 0;
 
         public ImitationService(ITimer timer, IFeederRepository repository)
         {
@@ -94,9 +96,10 @@ namespace Model.services.realization
             if (feeder != null)
             {
                 Schedule schedule = feeder.activeSchedule;
-                if (schedule != null)
+                
+                if (((ImitationDuration.TotalSeconds / schedule.interval.TotalSeconds) - schedule.round> 1))
                 {
-                    //TODO разобраться с таймером приложения и синхронизировать расписания с ним
+                    schedule.round += 1;
                     feeder.leftToAdd += schedule.amountOfFood;
                 }
                 if (feeder.leftToAdd > 0)

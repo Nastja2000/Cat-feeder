@@ -9,7 +9,7 @@ namespace Presentation
 {
     public interface IAdminOwnerView : IView
     {
-        event Action ShowFeeder;
+        event Action<string, string> ShowFeeder;
         event Action GoBack;
         event Action<string,string> addFeeder;
         event Action<string, string> deleteFeeder;

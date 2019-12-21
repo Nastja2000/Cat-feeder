@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Model;
 using Model.services;
 using Ninject;
@@ -43,9 +44,9 @@ namespace Presentation
             FeederUpdated?.Invoke();
         }
 
-        private void ShowFeeder()
+        private void ShowFeeder(string ownerName, string feederName)
         {
-            _kernel.Get<AdminFeederPresenter>().Run();
+            _kernel.Get<AdminFeederPresenter>().Run(ownerName, feederName);
             //presenter.ImitationUpdated += ShowInitiative;
             _view.Show();
 

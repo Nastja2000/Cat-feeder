@@ -60,7 +60,7 @@
             // ChooseBtn
             // 
             this.ChooseBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChooseBtn.Location = new System.Drawing.Point(462, 217);
+            this.ChooseBtn.Location = new System.Drawing.Point(463, 273);
             this.ChooseBtn.Name = "ChooseBtn";
             this.ChooseBtn.Size = new System.Drawing.Size(102, 37);
             this.ChooseBtn.TabIndex = 17;
@@ -73,7 +73,7 @@
             this.lbl_Error.AutoSize = true;
             this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Error.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error.Location = new System.Drawing.Point(432, 154);
+            this.lbl_Error.Location = new System.Drawing.Point(550, 212);
             this.lbl_Error.Name = "lbl_Error";
             this.lbl_Error.Size = new System.Drawing.Size(47, 20);
             this.lbl_Error.TabIndex = 16;
@@ -90,7 +90,7 @@
             // DeleteBtn
             // 
             this.DeleteBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.DeleteBtn.Location = new System.Drawing.Point(616, 217);
+            this.DeleteBtn.Location = new System.Drawing.Point(618, 273);
             this.DeleteBtn.Name = "DeleteBtn";
             this.DeleteBtn.Size = new System.Drawing.Size(102, 37);
             this.DeleteBtn.TabIndex = 14;
@@ -116,7 +116,7 @@
             this.GoBackBtn.Text = "Back ";
             this.GoBackBtn.UseVisualStyleBackColor = true;
             // 
-            // UserView
+            // OwnerView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -129,7 +129,7 @@
             this.Controls.Add(this.AddBtn);
             this.Controls.Add(this.lv_users);
             this.Controls.Add(this.label1);
-            this.Name = "UserView";
+            this.Name = "OwnerView";
             this.Text = "UserForm";
             this.ResumeLayout(false);
             this.PerformLayout();

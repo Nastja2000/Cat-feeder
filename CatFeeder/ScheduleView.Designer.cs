@@ -34,6 +34,8 @@
             this.tb_TurnDurationLimit = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.lbl_Error = new System.Windows.Forms.Label();
+            this.label1 = new System.Windows.Forms.Label();
+            this.tb_amount = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // GoBackBtn
@@ -55,7 +57,6 @@
             this.AddBtn.TabIndex = 33;
             this.AddBtn.Text = "Add Mark";
             this.AddBtn.UseVisualStyleBackColor = true;
-            //this.AddBtn.Click += new System.EventHandler(this.AddBtn_Click);
             // 
             // SaveBtn
             // 
@@ -71,7 +72,7 @@
             // tb_TurnDurationLimit
             // 
             this.tb_TurnDurationLimit.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_TurnDurationLimit.Location = new System.Drawing.Point(443, 247);
+            this.tb_TurnDurationLimit.Location = new System.Drawing.Point(437, 243);
             this.tb_TurnDurationLimit.Name = "tb_TurnDurationLimit";
             this.tb_TurnDurationLimit.Size = new System.Drawing.Size(89, 27);
             this.tb_TurnDurationLimit.TabIndex = 35;
@@ -92,17 +93,38 @@
             this.lbl_Error.AutoSize = true;
             this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Error.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error.Location = new System.Drawing.Point(558, 250);
+            this.lbl_Error.Location = new System.Drawing.Point(346, 127);
             this.lbl_Error.Name = "lbl_Error";
             this.lbl_Error.Size = new System.Drawing.Size(47, 20);
             this.lbl_Error.TabIndex = 37;
             this.lbl_Error.Text = "Error";
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(274, 218);
+            this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(135, 17);
+            this.label1.TabIndex = 39;
+            this.label1.Text = "Amount adding food";
+            // 
+            // tb_amount
+            // 
+            this.tb_amount.Font = new System.Drawing.Font("Consolas", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_amount.Location = new System.Drawing.Point(437, 212);
+            this.tb_amount.Name = "tb_amount";
+            this.tb_amount.Size = new System.Drawing.Size(89, 27);
+            this.tb_amount.TabIndex = 38;
+            this.tb_amount.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // ScheduleView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.tb_amount);
             this.Controls.Add(this.lbl_Error);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.tb_TurnDurationLimit);
@@ -124,5 +146,7 @@
         private System.Windows.Forms.TextBox tb_TurnDurationLimit;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lbl_Error;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox tb_amount;
     }
 }

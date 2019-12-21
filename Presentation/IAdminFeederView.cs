@@ -13,7 +13,9 @@ namespace Presentation
         //event Action<string> DeleteSch;
         event Action<string> GoBack;
 
+        event Action<string, IEnumerable<string>> Save;
         string ownerName { get; set; }
+        string feederName { get; set; }
 
         void ShowSchs(IEnumerable<string> characters);
 

@@ -13,7 +13,6 @@ namespace Model.services
         //TODO: Всё тут
         event Action FeederByOwnerUpdated;
 
-
         //+findSchedules(???)
         void chooseSchedule(string feederName, string scheduleName);
         void deleteSchedule(string feederName, string scheduleName);

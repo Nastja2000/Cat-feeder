@@ -65,7 +65,6 @@ namespace CatFeeder
 
         private void ChooseBtn_Click(object sender, EventArgs e)
         {
-            //TODO сюда из под кнопки должен прилетать айдишник (или ещё как это решить)
             if (lv_users.SelectedItems.Count > 0)
             {
                 ShowOwner?.Invoke(lv_users.SelectedItems[0].Text);
