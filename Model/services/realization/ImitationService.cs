@@ -2,15 +2,16 @@
 using System.Collections.Generic;
 using Model.entities;
 using Model.repository;
-using Model.repository.realization;
 
 namespace Model.services.realization
 {
     public class ImitationService : IImitationService
     {
-        
+
 
         private IFeederRepository _feederRepository;
+
+        private static Random rand = new Random();
 
         public event Action FeedersUpdated;
         public event Action ImitationDurationUpdated;
@@ -18,8 +19,11 @@ namespace Model.services.realization
         private readonly ITimer _timer;
         public TimeSpan ImitationDuration { get; set; }
         public int StepSize { get; set; }
-        public int EatingFreq { get; set; }
-        public int EatingQuan { get; set; }
+        public int EatingFreq { get; set; } = 0;
+        public int QuanDispersion { get; set; } = 0;
+        public int EatingQuan { get; set; } = 0;
+
+        public int foodStat { get; set; } = 0;
 
         public ImitationService(ITimer timer, IFeederRepository repository)
         {
@@ -28,14 +32,11 @@ namespace Model.services.realization
             _timer.Interval = 5000;
             _timer.Tick += TimerTick;
             StepSize = 1;
-            
-
-         //   _round_durations = new List<TimeSpan>();
         }
 
-        public int addFood(int id, int quan)
+        public int addFood(string id, int quan)
         {
-            Feeder feeder = _feederRepository.read(id);
+            Feeder feeder = _feederRepository.readByName(id);
             if (feeder == null)
             {
                 //TODO обработать
@@ -63,7 +64,7 @@ namespace Model.services.realization
             return _feederRepository.readAll();
         }
 
-        private void TimerTick(object sender, EventArgs e)
+        public void OneStep()
         {
             bool f = false;
             int minutes = StepSize * 20 % 60;
@@ -73,11 +74,19 @@ namespace Model.services.realization
             foreach (Feeder feeder in _feederRepository.readAll())
             {
                 if (CheckStatus(feeder)) f = true;
+                if (EatingProtocol(feeder)) f = true;
             }
             if (f) FeedersUpdated?.Invoke();
 
             ImitationDurationUpdated?.Invoke();
         }
+
+        private void TimerTick(object sender, EventArgs e)
+        {
+            OneStep();
+        }
+
+
 
         private bool CheckStatus(Feeder feeder)
         {
@@ -92,7 +101,7 @@ namespace Model.services.realization
                 }
                 if (feeder.leftToAdd > 0)
                 {
-                    
+
                     if (typeof(PressFeeder).IsInstanceOfType(feeder))
                     {
                         int speed;
@@ -100,6 +109,7 @@ namespace Model.services.realization
                         speed = realFeeder.speed * realFeeder.rand.Next(90, 110) / 100;
                         if (speed > feeder.tankFood)
                         {
+                            feeder.plateFood += feeder.tankFood;
                             feeder.tankFood = 0;
                             feeder.leftToAdd = 0;
                             //TODO воткнуть алярму???
@@ -108,7 +118,8 @@ namespace Model.services.realization
                         {
                             feeder.tankFood -= speed;
                             feeder.leftToAdd -= speed;
-                            
+                            if (feeder.leftToAdd < 0) feeder.leftToAdd = 0;
+                            feeder.plateFood += speed;
                         }
                         f = true;
                     }
@@ -120,33 +131,69 @@ namespace Model.services.realization
                             {
                                 feeder.tankFood -= feeder.speed;
                                 feeder.leftToAdd -= feeder.speed;
+                                feeder.plateFood += feeder.speed;
                             }
                             else
                             {
+                                feeder.plateFood += feeder.tankFood;
                                 feeder.tankFood = 0;
                                 feeder.leftToAdd = 0; //TODO воткнуть алярму???
                             }
-                        } else
+                        }
+                        else
                         {
-                           /* if (feeder.leftToAdd > feeder.tankFood)
-                            {
-                                //TODO воткнуть алярму???
-                            }*/
+                            /* if (feeder.leftToAdd > feeder.tankFood)
+                             {
+                                 //TODO воткнуть алярму???
+                             }*/
+
+                            feeder.plateFood += feeder.leftToAdd;
                             feeder.tankFood = 0;
                             feeder.leftToAdd = 0;
                         }
                         f = true;
                     }
                 }
-                
+
             }
             return f;
         }
 
+        private bool EatingProtocol(Feeder feeder)
+        {
+            bool f = false;
+            if (feeder != null)
+            {
+                if (feeder.plateFood <= 0)
+                {
+                    //todo alarm
+                }
+                else
+                {
+                    int poesc = 0;
+                    for (int i = 0; i < feeder.cats; i++)
+                    {
+                        if (rand.Next(0, 100) >= EatingFreq)
+                        {
+                            poesc += EatingQuan + QuanDispersion * (rand.Next(0,200) - 100)/100;
+                        }
+                    }
+                    if(feeder.plateFood < poesc)
+                    {
+                        feeder.plateFood = 0;
+                    }
+                    else
+                    {
+                        feeder.plateFood -= poesc;
+                    }
+                }
+            }
+            return f;
+        }
         public void StartImmitation()
         {
             _timer.Start();
-          //  throw new NotImplementedException();
+            //  throw new NotImplementedException();
             /*
             _initiative = GetInitiative().ToArray();  // copy initiative to avoid state changes during combat
             if (!_initiative.Any())
@@ -158,9 +205,9 @@ namespace Model.services.realization
             Turn = 0;
 
             _combat_start = _round_start = _turn_start = DateTime.Now;
-            
+
             */
-            
+
         }
 
         public void StopImmitation()

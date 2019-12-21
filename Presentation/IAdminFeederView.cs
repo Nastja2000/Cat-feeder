@@ -6,12 +6,14 @@ namespace Presentation
 {
     public interface IAdminFeederView : IView
     {
-        event Action ShowSch;
-        event Action<string> ImportSchedule;
-        event Action<string> ExportSchedule;
+        event Action<string> ShowSch;
+        event Action<string, string> ImportSchedule;
+        event Action<string, string> ExportSchedule;
         //event Action<string> AddSch;
         //event Action<string> DeleteSch;
-        event Action GoBack;
+        event Action<string> GoBack;
+
+        string ownerName { get; set; }
 
         void ShowSchs(IEnumerable<string> characters);
 

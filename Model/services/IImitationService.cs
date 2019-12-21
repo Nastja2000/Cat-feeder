@@ -20,11 +20,11 @@ namespace Model.services
         public int EatingFreq { get;  set;}
         public int EatingQuan { get; set;}
         IEnumerable<Feeder> GetAllFeeders();
-
-        int addFood(int id, int quan);
+        public void OneStep();
+        int addFood(string name, int quan);
         void StartImmitation();
         void StopImmitation();
 
-
+       
     }
 }

@@ -77,6 +77,7 @@
             this.lv_users.Size = new System.Drawing.Size(205, 227);
             this.lv_users.TabIndex = 8;
             this.lv_users.UseCompatibleStateImageBehavior = false;
+            //this.lv_users.SelectedIndexChanged += new System.EventHandler(this.lv_users_SelectedIndexChanged);
             // 
             // DeleteBtn
             // 

@@ -11,7 +11,7 @@ namespace Model.services
     {
         event Action ScheduleByOwnerUpdate;
 
-        Schedule GetSchedule(int id);
+        Schedule GetSchedule(string name);
      
         //testS
         void Save(IEnumerable<string> info);

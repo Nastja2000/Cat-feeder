@@ -14,6 +14,8 @@ namespace Model.entities
 
         public Schedule activeSchedule { get; set; }
 
+        public int plateFood { get; set; } = 0;
+
         public IEnumerable<Schedule> schedules = new List<Schedule>();
         public int cats { get; set; }
         public int speed { get; set; }

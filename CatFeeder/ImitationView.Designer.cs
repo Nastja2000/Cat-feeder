@@ -254,6 +254,7 @@
             this.StepButton.TabIndex = 23;
             this.StepButton.Text = "Step";
             this.StepButton.UseVisualStyleBackColor = true;
+            this.StepButton.Click += new System.EventHandler(this.StepButton_Click);
             // 
             // AddFoodButton
             // 
@@ -356,20 +357,20 @@
             this.adminToolStripMenuItem,
             this.userToolStripMenuItem});
             this.toolStripMenuItem1.Name = "toolStripMenuItem1";
-            this.toolStripMenuItem1.Size = new System.Drawing.Size(66, 24);
+            this.toolStripMenuItem1.Size = new System.Drawing.Size(68, 24);
             this.toolStripMenuItem1.Text = "Log As";
             // 
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.adminToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
             this.adminToolStripMenuItem.Text = "Admin";
             this.adminToolStripMenuItem.Click += new System.EventHandler(this.adminToolStripMenuItem_Click);
             // 
             // userToolStripMenuItem
             // 
             this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(216, 26);
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(136, 26);
             this.userToolStripMenuItem.Text = "User";
             this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
             // 

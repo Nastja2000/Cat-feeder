@@ -19,13 +19,17 @@ namespace Model.services.realization
             Owner old = _ownerRepository.read(id);
             if (old != null)
             {
+                string oldname = old.name;
                 old.name = name;
+                old.log.Add("Owner №" + id + "change name from " + oldname + "to" + name);
+                OwnerUpdated?.Invoke();
             }
         }
 
-        public IEnumerable<Feeder> GetAllFeeders(int id)
+        public IEnumerable<Feeder> GetAllFeeders(string name)
         {
-            return _ownerRepository.GetFeeders(id);
+            Owner owner = _ownerRepository.readByName(name);
+            return _ownerRepository.GetFeeders(owner.id);
         }
     }
 }

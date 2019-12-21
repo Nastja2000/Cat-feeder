@@ -14,34 +14,38 @@ namespace Model.services.realization
         private IOwnerRepository _ownerRepository = new OwnerRepository();
         private IFeederRepository _feederRepository = new FeederRepository();
 
-        public event Action<int> OwnerUpdated;
+        public event Action<string> OwnerUpdated;
 
-        public void addFeeder(int id, string name)
+        public void addFeeder(string ownerName, string name)
         {
             Feeder feeder = new Feeder();
             feeder.name = name;
             _feederRepository.create(feeder);
-            Owner owner = _ownerRepository.read(id);
+            Owner owner = _ownerRepository.readByName(ownerName);
             List<Feeder> l = owner.feeders.ToList();
             l.Add(feeder);
             owner.feeders = l;
             _ownerRepository.update(owner);
-            OwnerUpdated?.Invoke(id);
+            OwnerUpdated?.Invoke(ownerName);
         }
 
         //TODO: обращаться из одного сервиса в другой
-        public void deleteFeeder(int ownerId, int feederId)
+        public void deleteFeeder(string ownerName, string feederName)
         {
-            Owner owner = _ownerRepository.read(ownerId);
-            owner.feeders = owner.feeders.Where(s => s.id != feederId);
+            Owner owner = _ownerRepository.readByName(ownerName);
+            owner.feeders = owner.feeders.Where(s => s.name != feederName);
             _ownerRepository.update(owner);
-            _feederRepository.delete(feederId);
+            Feeder feeder = _feederRepository.readByName(feederName);
+            _feederRepository.delete(feeder.id);
+            OwnerUpdated?.Invoke(ownerName);
         }
 
+
         //todo разобраться с id
-        public IEnumerable<string> GetAllFeeders(int id)
+        public IEnumerable<string> GetAllFeeders(string name)
         {
-            List<Feeder> feeders = _ownerRepository.GetFeeders(id).ToList();
+            Owner owner = _ownerRepository.readByName(name);
+            List<Feeder> feeders = _ownerRepository.GetFeeders(owner.id).ToList();
             List<string> names = new List<string>();
             foreach (Feeder feeder in feeders)
             {

@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
 using Model;
+using Model.entities;
 using Model.services;
 using Ninject;
 
@@ -43,10 +45,17 @@ namespace Presentation
 
         }
 
-        /*private void ShowFeeders()
+        private void ShowFeeders(string name)
         {
-            _view.ShowFeeders(_service.GetAllFeeders());
-        }*/
+            
+            List<string> names = new List<string>();
+            
+            foreach (Feeder feeder in _service.GetAllFeeders(name))
+            {
+                names.Add(feeder.name);
+            }
+            _view.ShowFeeders(names);
+        }
 
         private void ShowImitationView()
         {
@@ -55,9 +64,9 @@ namespace Presentation
         }
 
         
-        public void Run()
+        public void Run(string name)
         {
-           // ShowFeeders();
+            ShowFeeders(name);
             _view.Show();
         }        
     }

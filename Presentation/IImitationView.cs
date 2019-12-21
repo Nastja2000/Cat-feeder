@@ -16,9 +16,9 @@ namespace Presentation
 
        // string TurnDurationLimit { get; set; }
 
-        event Action ShowUser;
+        event Action<string> ShowUser;
         event Action ShowAdmin;
-
+        event Action Step;
         event Action StartImmitation;
         event Action StopImmitation;
         event Action addFood;

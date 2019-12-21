@@ -13,5 +13,7 @@ namespace Model.repository
         void update(T obj);
         void delete(int id);
         IEnumerable<T> readAll();
+
+        T readByName(string name);
     }
 }

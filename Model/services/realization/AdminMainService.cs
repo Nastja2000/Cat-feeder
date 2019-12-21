@@ -4,8 +4,6 @@ using Model.repository.realization;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Model.services.realization
 {
@@ -22,16 +20,20 @@ namespace Model.services.realization
                 owner = new Owner();
                 owner.name = name;
                 owner.id = _ownerRepository.create(owner);
+                owner.log.Add("Owner №" + owner.id + "created by Admin");
                 OwnersUpdated?.Invoke();
             }
         }
 
-        public void deleteOwner(int id)
+        public void deleteOwner(string name)
         {
-            Owner owner = _ownerRepository.read(id);
+            Owner owner = _ownerRepository.readByName(name);
             if (owner != null)
             {
                 _ownerRepository.delete(owner.id);
+                //TODO решить что-то с логом имитации, мб хранить только изменения нижнего уровня, соотв логи овнера и самой имитации в имитации
+              //  owner.log.Add("Owner №" + id + "deleted by Admin");
+                OwnersUpdated?.Invoke();
             }
         }
 

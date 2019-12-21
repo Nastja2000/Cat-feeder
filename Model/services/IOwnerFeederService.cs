@@ -15,11 +15,11 @@ namespace Model.services
 
 
         //+findSchedules(???)
-        void chooseSchedule(int feederId, int scheduleId);
-        void deleteSchedule(int feederId, int scheduleId);
+        void chooseSchedule(string feederName, string scheduleName);
+        void deleteSchedule(string feederName, string scheduleName);
 		//+log(Feeder)!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         void changeName(int id, string name);
-		void CreateSchedule(int feederId, string name);
+		void CreateSchedule(string feederName, string name);
 
   
     }

@@ -12,7 +12,7 @@ namespace Model.services
         event Action OwnerUpdated;
 
 
-        IEnumerable<Feeder> GetAllFeeders(int id);
+        IEnumerable<Feeder> GetAllFeeders(string name);
 
         void changeName(int id, string name);
         //+log(owner: Owner)

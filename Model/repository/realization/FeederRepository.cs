@@ -79,5 +79,9 @@ namespace Model.repository.realization
             return read(id).schedules;
         }
 
+        public Feeder readByName(string name)
+        {
+            return _data.Find(c => c.name == name);
+        }
     }
 }

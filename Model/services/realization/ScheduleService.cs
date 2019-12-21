@@ -11,7 +11,7 @@ namespace Model.services.realization
     {
         public event Action ScheduleByOwnerUpdate;
 
-        public Schedule GetSchedule(int id)
+        public Schedule GetSchedule(string name)
         {
             throw new NotImplementedException();
         }

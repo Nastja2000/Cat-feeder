@@ -14,7 +14,7 @@ namespace Model.services
         //TODO разобраться с тем, передавать ли id
         IEnumerable<string> GetAllOwners();
         void addOwner(string name);
-        void deleteOwner(int id);
+        void deleteOwner(string name);
 //+log()
     }
 }

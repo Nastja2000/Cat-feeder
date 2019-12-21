@@ -13,10 +13,10 @@ namespace Model.services
     {
         event Action FeederUpdated;
 
-        IEnumerable<Schedule> GetAllSchedules(int id);
+        IEnumerable<Schedule> GetAllSchedules(string name);
         //findSchedules(???)
-        void ImportSchedule(StreamReader reader, int id);
-        void ExportSchedule(StreamWriter writer, int id);
+        void ImportSchedule(StreamReader reader, string name);
+        void ExportSchedule(StreamWriter writer, string name);
 
     }
 }

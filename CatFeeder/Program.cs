@@ -26,7 +26,6 @@ namespace CatFeeder
             kernel.Bind<ApplicationContext>().ToConstant(new ApplicationContext());
             kernel.Bind<ITimer>().To<WinFormTimer>();
 
-            kernel.Bind<IOwnerView>().To<OwnerView>();
             kernel.Bind<IImitationView>().To<ImitationView>();
             kernel.Bind<IFeederView>().To<FeederView>();
             kernel.Bind<IAdminView>().To<AdminView>();

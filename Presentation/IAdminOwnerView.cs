@@ -11,8 +11,10 @@ namespace Presentation
     {
         event Action ShowFeeder;
         event Action GoBack;
-        event Action<string> addFeeder;
-        event Action<string> deleteFeeder;
+        event Action<string,string> addFeeder;
+        event Action<string, string> deleteFeeder;
+
+        string ownerName { get; set; }
 
         void ShowFeeders(IEnumerable<string> feeders);
         //void ChooseFeeder();

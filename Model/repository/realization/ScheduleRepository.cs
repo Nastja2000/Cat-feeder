@@ -50,6 +50,10 @@ namespace Model.repository.realization
             return rezult;
         }
 
+        public Schedule readByName(string name)
+        {
+            return _data.Find(c => c.name == name);
+        }
 
         public IEnumerable<Schedule> readByOwner(Owner owner)
         {

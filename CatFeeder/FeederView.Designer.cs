@@ -55,6 +55,7 @@
             this.lv_users.Size = new System.Drawing.Size(152, 248);
             this.lv_users.TabIndex = 9;
             this.lv_users.UseCompatibleStateImageBehavior = false;
+            this.lv_users.SelectedIndexChanged += new System.EventHandler(this.lv_users_SelectedIndexChanged);
             // 
             // btn_Import
             // 
@@ -90,7 +91,7 @@
             this.lbl_Error.AutoSize = true;
             this.lbl_Error.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lbl_Error.ForeColor = System.Drawing.Color.Red;
-            this.lbl_Error.Location = new System.Drawing.Point(372, 204);
+            this.lbl_Error.Location = new System.Drawing.Point(524, 264);
             this.lbl_Error.Name = "lbl_Error";
             this.lbl_Error.Size = new System.Drawing.Size(47, 20);
             this.lbl_Error.TabIndex = 32;
@@ -107,7 +108,7 @@
             // ChooseBtn
             // 
             this.ChooseBtn.Font = new System.Drawing.Font("MS Reference Sans Serif", 10.8F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.ChooseBtn.Location = new System.Drawing.Point(503, 250);
+            this.ChooseBtn.Location = new System.Drawing.Point(501, 317);
             this.ChooseBtn.Name = "ChooseBtn";
             this.ChooseBtn.Size = new System.Drawing.Size(102, 37);
             this.ChooseBtn.TabIndex = 33;

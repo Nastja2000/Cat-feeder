@@ -26,7 +26,7 @@ namespace Presentation
             _view.ShowAdmin += ShowAdmin;
             _view.StartImmitation += StartImmitation;
             _view.StopImmitation += StopImmitation;
-            //_view.Step += Step;
+            _view.Step += Step;
             _view.addFood += addFood;
             _view.setEatingFreq += setEatingFreq;
             _view.setEatingQuan += setEatingQuan;
@@ -35,14 +35,9 @@ namespace Presentation
             _imitationService = imitationService;
             _imitationService.ImitationDurationUpdated += ImitationDurationUpdated;
             _imitationService.FeedersUpdated += ShowFeeders;
-           // _imitationService.TurnFinished += TurnFinished;
 
 
         }
-        /*private void TurnFinished()
-        {
-            _view.ShowFeederStatus(_imitationService.CountOfFood);
-        }*/
 
         private void ShowFeeders()
         {
@@ -78,11 +73,12 @@ namespace Presentation
             
         }
 
-        private void ShowUser()
+        private void ShowUser(string name)
         {
-            _kernel.Get<OwnerPresenter>().Run();
+            //TODO id
+            _kernel.Get<OwnerPresenter>().Run(name);
             //presenter.ImitationUpdated += ShowInitiative;
-            _view.Close();
+           // _view.Close();
         }
 
         private void ShowAdmin()
@@ -94,11 +90,12 @@ namespace Presentation
         }
 
 
-  /*      private void Step()
+        private void Step()
         {
-            _imitationService.ImitationDurationUpdated();
-        }*/
+            _imitationService.OneStep();
+        }
 
+        //TODO переделать на set что бы проверять на надёжность
         private void setStepSize()
         {
             if (int.TryParse(_view.StepSizeVal, out int stepSizeVal))
@@ -107,20 +104,20 @@ namespace Presentation
             }
             else
             {
-                _view.ShowError("Invalid 'Initiative' value");
+                _view.ShowError("Invalid 'Step Size' value");
             }
         }
 
-
+        //TODO переписать
         private void addFood()
         {
             if (int.TryParse(_view.CountOfFood, out int countOfFood))
             {
-                _imitationService.addFood(_view.id, countOfFood);
+                //_imitationService.addFood(_view.id, countOfFood);
             }
             else
             {
-                _view.ShowError("Invalid 'Initiative' value");
+                _view.ShowError("Invalid 'Food' value");
             }
         }
 
@@ -132,7 +129,7 @@ namespace Presentation
             }
             else
             {
-                _view.ShowError("Invalid 'Initiative' value");
+                _view.ShowError("Invalid 'Quantity' value");
             }
         }
 
@@ -144,7 +141,7 @@ namespace Presentation
             }
             else
             {
-                _view.ShowError("Invalid 'Initiative' value");
+                _view.ShowError("Invalid 'Freq' value");
             }
         }
 

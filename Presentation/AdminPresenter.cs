@@ -33,7 +33,7 @@ namespace Presentation
 
         private void deleteOwner(string name)
         {
-            _service.deleteOwner(int.Parse(name));
+            _service.deleteOwner(name);
         }
 
         private void addOwner(string name)
@@ -41,11 +41,11 @@ namespace Presentation
             _service.addOwner(name);
         }
 
-        private void ShowOwner(int id)
+        private void ShowOwner(string name)
         {
             var presenter = _kernel.Get<AdminOwnerPresenter>();
             presenter.FeederUpdated += ConfirmUpdate; 
-            presenter.Run(id);
+            presenter.Run(name);
             //presenter.ImitationUpdated += ShowInitiative;
             // _view.Show();
 

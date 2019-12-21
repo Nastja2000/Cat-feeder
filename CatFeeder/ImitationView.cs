@@ -35,11 +35,11 @@ namespace CatFeeder
         public string EatingFreqVal => tb_Cat_Eating_Frequency.Text;
 
         public event Action ShowAdmin;
-        public event Action ShowUser;
+        public event Action<string> ShowUser;
         public event Action StartImmitation;
         public event Action StopImmitation;
         public event Action addFood;
-        //public event Action Step;
+        public event Action Step;
         public event Action setEatingQuan;
         public event Action setEatingFreq;
         public event Action setStepSize;
@@ -91,10 +91,11 @@ namespace CatFeeder
 
             StartImitButton.Enabled = false;
             StopImitButton.Enabled = true;
-            tb_AddFood.Enabled = false;
-            tb_Cat_Eating_Frequency.Enabled = false;
-            tb_QuantityDispersion.Enabled = false;
-            tb_QuantityPerCatEating.Enabled = false;
+            //TODO если научимся стопать - выключить
+            tb_AddFood.Enabled = true;
+            tb_Cat_Eating_Frequency.Enabled = true;
+            tb_QuantityDispersion.Enabled = true;
+            tb_QuantityPerCatEating.Enabled = true;
         }
 
         private void ResetView()
@@ -130,7 +131,8 @@ namespace CatFeeder
         {
             /*OwnerView newForm = new OwnerView(new ApplicationContext());
             newForm.Show();*/
-            ShowUser?.Invoke();
+            //todo сделать поле с выбором юзеров
+            ShowUser?.Invoke("kolobok");
         }
 
         private void adminToolStripMenuItem_Click(object sender, EventArgs e)
@@ -181,11 +183,14 @@ namespace CatFeeder
 
 
 
-        /* private void StepButton_Click(object sender, EventArgs e)
+        /*private void StepButton_Click(object sender, EventArgs e)
          {
-             Step?.Invoke();
+             
          }*/
 
-
+        private void StepButton_Click(object sender, EventArgs e)
+        {
+            Step?.Invoke();
+        }
     }
 }

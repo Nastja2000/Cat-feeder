@@ -28,16 +28,18 @@ namespace CatFeeder
             
         }
 
-        public event Action ShowSch;
-        public event Action GoBack;
+        public event Action<string> ShowSch;
+        public event Action<string> GoBack;
 // public event Action<string> AddSch;
-        public event Action<string> ImportSchedule;
-        public event Action<string> ExportSchedule;
+        public event Action<string, string> ImportSchedule;
+        public event Action<string, string> ExportSchedule;
        // public event Action<string> DeleteSch;
+
+            public string ownerName { get; set; }
 
         private void GoBackBtn_Click(object sender, EventArgs e)
         {
-            GoBack?.Invoke();
+            GoBack?.Invoke(ownerName);
         }
 
         /*  private void AddBtn_Click(object sender, EventArgs e)
@@ -74,21 +76,22 @@ namespace CatFeeder
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ExportSchedule?.Invoke(saveFileDialog.FileName);
+                ExportSchedule?.Invoke(saveFileDialog.FileName, ownerName);
             }
         }
 
         private void ChooseBtn_Click(object sender, EventArgs e)
         {
             //TODO переход на админский schedule который по сути обычный shedule только с запретом на изменение 
-            ShowSch?.Invoke();
+            //TODO и достать из чуз бокса
+            ShowSch?.Invoke("...");
         }
 
         private void btn_Import_Click(object sender, EventArgs e)
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ImportSchedule?.Invoke(openFileDialog.FileName);
+                ImportSchedule?.Invoke(openFileDialog.FileName, ownerName);
             }
         }
     }

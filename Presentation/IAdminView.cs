@@ -5,7 +5,7 @@ namespace Presentation
 {
     public interface IAdminView : IView
     {
-        event Action<int> ShowOwner;
+        event Action<string> ShowOwner;
         event Action GoBack;
         event Action<string> addOwner;
         event Action<string> deleteOwner;

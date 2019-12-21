@@ -23,10 +23,10 @@ namespace CatFeeder
             base.Show();
         }
 
-        public event Action<int> ShowOwner;
-      //public event Action ShowFeeder;
-      public event Action GoBack;
-      public event Action<string> addOwner;
+        public event Action<string> ShowOwner;
+        //public event Action ShowFeeder;
+        public event Action GoBack;
+        public event Action<string> addOwner;
         public event Action<string> deleteOwner;
 
         private void GoBackBtn_Click(object sender, EventArgs e)
@@ -66,7 +66,17 @@ namespace CatFeeder
         private void ChooseBtn_Click(object sender, EventArgs e)
         {
             //TODO сюда из под кнопки должен прилетать айдишник (или ещё как это решить)
-            ShowOwner?.Invoke(0);
+            if (lv_users.SelectedItems.Count > 0)
+            {
+                ShowOwner?.Invoke(lv_users.SelectedItems[0].Text);
+            }
+            else
+            {
+                ShowError("U should choose from list before clicking button");
+            }
+            
         }
+
+
     }
 }

@@ -27,20 +27,23 @@ namespace CatFeeder
             base.Show();
         }
 
-        public event Action ShowSch;
-        public event Action GoBack;
-        public event Action<string> CreateSchedule;
-        public event Action<string> ImportSchedule;
-        public event Action<string> ExportSchedule;
+        public event Action<string> ShowSch;
+        public event Action<string> GoBack;
+        public event Action<string,string> CreateSchedule;
+        public event Action<string, string> ImportSchedule;
+        public event Action<string, string> ExportSchedule;
+
+        public string feederName { get; set; }
+        public string ownerName { get; set; }
 
         private void GoBackBtn_Click(object sender, EventArgs e)
         {
-            GoBack?.Invoke();
+            GoBack?.Invoke(ownerName);
         }
 
         private void AddBtn_Click(object sender, EventArgs e)
         {
-            CreateSchedule?.Invoke(tb_Name.Text);
+            CreateSchedule?.Invoke(feederName, tb_Name.Text);
         }
 
         public void ShowSchs(IEnumerable<string> users)
@@ -61,7 +64,7 @@ namespace CatFeeder
         {
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ImportSchedule?.Invoke(openFileDialog.FileName);
+                ImportSchedule?.Invoke(openFileDialog.FileName, feederName);
             }
         }
 
@@ -69,13 +72,29 @@ namespace CatFeeder
         {
             if (saveFileDialog.ShowDialog() == DialogResult.OK)
             {
-                ExportSchedule?.Invoke(saveFileDialog.FileName);
+                ExportSchedule?.Invoke(saveFileDialog.FileName, feederName);
             }
         }
         
         private void ChooseBtn_Click_1(object sender, EventArgs e)
         {
-            ShowSch?.Invoke();
+            if (txt.Length > 0)
+            {
+                ShowSch?.Invoke(txt);
+            } else
+            {
+                ShowError("U should choose from list before clicking button");
+            }
+           
+        }
+
+        private string txt = "";
+        private void lv_users_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (lv_users.SelectedItems.Count > 0)
+            {
+               txt = lv_users.SelectedItems[0].Text;
+            }
         }
     }
 }

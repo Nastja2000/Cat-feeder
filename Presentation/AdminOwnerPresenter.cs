@@ -23,22 +23,23 @@ namespace Presentation
             _view.deleteFeeder += deleteFeeder;
             _view.GoBack += ShowImitationView;
 
-            _service.OwnerUpdated += ShowFeeders; 
+            _service.OwnerUpdated += ShowFeeders;
         }
 
 
 
-        private void deleteFeeder(string name)
+        private void deleteFeeder(string ownerName, string name)
         {
             //TODO принимаем чья и какая
-            _service.deleteFeeder(0, int.Parse(name));
+            _service.deleteFeeder(ownerName, name);
+            FeederUpdated?.Invoke();
 
         }
 
-        private void addFeeder(string name)
+        private void addFeeder(string ownerName, string name)
         {
             //TODO принимаем чья и как зовут
-            _service.addFeeder(0, name);
+            _service.addFeeder(ownerName, name);
             FeederUpdated?.Invoke();
         }
 
@@ -50,9 +51,9 @@ namespace Presentation
 
         }
 
-        private void ShowFeeders(int id)
+        private void ShowFeeders(string name)
         {
-            _view.ShowFeeders(_service.GetAllFeeders(id));
+            _view.ShowFeeders(_service.GetAllFeeders(name));
         }
 
         private void ShowImitationView()
@@ -62,9 +63,10 @@ namespace Presentation
         }
 
 
-        public void Run(int id)
+        public void Run(string name)
         {
-             ShowFeeders(id);
+            ShowFeeders(name);
+            _view.ownerName = name;
             _view.Show();
         }
     }

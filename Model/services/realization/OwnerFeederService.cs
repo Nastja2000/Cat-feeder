@@ -12,7 +12,7 @@ namespace Model.services.realization
     public class OwnerFeederService : IOwnerFeederService
     {
 
-        private readonly JsonSerializer _serializer;
+        private readonly JsonSerializer _serializer = new JsonSerializer();
 
         private IFeederRepository _feederRepository = new FeederRepository();
         private IScheduleRepository _scheduleRepository = new ScheduleRepository();
@@ -28,49 +28,54 @@ namespace Model.services.realization
             }
         }
 
-        public void chooseSchedule(int feederId, int scheduleId)
+        public void chooseSchedule(string feederName, string scheduleName)
         {
-            Feeder feeder = _feederRepository.read(feederId);
-            IEnumerable<Schedule> schedules = _feederRepository.GetSchedules(feederId);
-            Schedule newActive = schedules.ToList().Find(s => s.id == scheduleId);
+            Feeder feeder = _feederRepository.readByName(feederName);
+            IEnumerable<Schedule> schedules = _feederRepository.GetSchedules(feeder.id);
+            Schedule newActive = schedules.ToList().Find(s => s.name == scheduleName);
             if (newActive != null)
             {
                 feeder.activeSchedule = newActive;
+                FeederUpdated?.Invoke();
             }
         }
 
-        public void CreateSchedule(int id, string name)
+        public void CreateSchedule(string feederName, string name)
         {
             List<string> marksList = new List<string>();
             marksList.Add(name);
             Schedule schedule = new Schedule(marksList);
+            schedule.name = name;
             _scheduleRepository.create(schedule);
-            Feeder feeder = _feederRepository.read(id);
+            Feeder feeder = _feederRepository.readByName(feederName);
             List<Schedule> l = feeder.schedules.ToList();
             l.Add(schedule);
             feeder.schedules = l;
             _feederRepository.update(feeder);
+            FeederUpdated?.Invoke();
         }
 
 
 
-        public void deleteSchedule(int feederId, int scheduleId)
+        public void deleteSchedule(string feederName, string scheduleName)
         {
             try
             {
                 //TODO поменять void na int и не бросать ошибки а на презенторе проверять получилось ли
-                Feeder feeder = _feederRepository.read(feederId);
+                Feeder feeder = _feederRepository.readByName(feederName);
                 //TODO спросить можно ли так
-                if (feeder.activeSchedule?.id == scheduleId)
+                if (feeder.activeSchedule?.name == scheduleName)
                 {
                     //TODO проверить
                     throw new InvalidOperationException();
                 }
                 else
                 {
-                    feeder.schedules = feeder.schedules.Where(s => s.id != scheduleId);
+                    feeder.schedules = feeder.schedules.Where(s => s.name != scheduleName);
                     _feederRepository.update(feeder);
-                    _scheduleRepository.delete(scheduleId);
+                    Schedule schedule = _scheduleRepository.readByName(scheduleName);
+                    _scheduleRepository.delete(schedule.id);
+                    FeederUpdated?.Invoke();
                 }
             }
             catch (InvalidOperationException e)
@@ -81,19 +86,20 @@ namespace Model.services.realization
 
         }
 
-        public void ExportSchedule(StreamWriter writer, int id)
+        public void ExportSchedule(StreamWriter writer, string name)
         {
-            _serializer.Serialize(writer, GetAllSchedules(id));
+            _serializer.Serialize(writer, GetAllSchedules(name));
         }
 
-        public IEnumerable<Schedule> GetAllSchedules(int id)
+        public IEnumerable<Schedule> GetAllSchedules(string name)
         {
-            return _feederRepository.GetSchedules(id);
+            Feeder feeder = _feederRepository.readByName(name);
+            return _feederRepository.GetSchedules(feeder.id);
         }
 
-        public void ImportSchedule(StreamReader reader, int id)
+        public void ImportSchedule(StreamReader reader, string name)
         {
-            Feeder feeder = _feederRepository.read(id);
+            Feeder feeder = _feederRepository.readByName(name);
             //TODO какого, простите, хрена? тут просто не работает to list
             List<Schedule> schedules = new List<Schedule>();//_feederRepository.GetSchedules(id).ToList();
             if (feeder != null)

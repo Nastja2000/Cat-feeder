@@ -10,5 +10,7 @@ namespace Model.entities
     {
         public int id { get; set; }
         public string name { get; set; }
+
+        public List<string> log = new List<string>();
     }
 }

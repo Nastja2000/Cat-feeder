@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Model.entities
 {
-    public class Schedule
+    public class Schedule : EntityBase
     {
         public Schedule(IEnumerable<string> _marks, int amount, TimeSpan _interval)
         {
@@ -26,7 +26,6 @@ namespace Model.entities
 
         //TODO решить с этим что-то
         private Schedule() : this (new List<string>(), 1000, new TimeSpan(1, 0, 0)) { }
-        public int id { get; set; }
         public int amountOfFood { get; set; }
         public TimeSpan interval { get; set; }
 
